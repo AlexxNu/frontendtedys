@@ -1,3 +1,6 @@
+<?php 
+$server = Route::ctrRouteServer();
+?>
 <!-- PRELOADER -->
         <div id="loader"></div>
 
@@ -70,7 +73,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <!-- Logo -->
-                                <a class="navbar-brand" href="./index.html"><img src="<?php echo $url;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
+                                <a class="navbar-brand" href="./index.html"><img src="<?php echo $server;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
                             </div>
                             <!-- Cart & Search -->
                             <div class="header-xtra pull-right">

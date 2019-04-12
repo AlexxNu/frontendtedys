@@ -14,9 +14,8 @@
     
     <!-- MANTENER LA RUTA FIJA DEL PROYECTO-->
         <?php 
+            $server = Route::ctrRouteServer();
             $url = Route::ctrRoute();
-            
-
             
         ?>
         <!-- Mobile Metas -->
@@ -108,6 +107,8 @@
                 else{
                     include "moduls/error404.php";
                 }
+            }else{
+                include "moduls/slide.php";
             }
         ?>
     </body>
