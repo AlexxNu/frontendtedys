@@ -41,7 +41,7 @@ $server = Route::ctrRouteServer();
                                      font-weight: bold;
                                      line-height:44px;
                                      text-transform: uppercase;
-                                     color: #fff;">'.$titulo1["texto"].'<span class="ss-color" style="color:#d6644a;">'.$titulo1["ss-color"].'</span>'.$titulo1["texto2"].'</div>
+                                     color: #fff;">'.$titulo1["texto"].'<span class="ss-color" style="color:#d6644a;"> '.$titulo1["ss-color"].' </span>'.$titulo1["texto2"].'</div>
                                 <div class="tp-caption lft skewtoleftshort rs-parallaxlevel-9"
                                      data-x="'.$estiloTextoSlide["data-x"].'"
                                      data-y="280"

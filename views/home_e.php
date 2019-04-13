@@ -109,6 +109,7 @@
                 }
             }else{
                 include "moduls/slide.php";
+                include "moduls/featuredProducts.php";
             }
         ?>
     </body>
