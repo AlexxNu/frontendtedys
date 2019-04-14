@@ -77,6 +77,7 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <script src="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.min.js"></script>
         <script src="<?php echo $url;?>views/js/main.js"></script>
+        <script src="<?php echo $url;?>views/js/home_e.js"></script>
 
     </head>
     <body id="home4">
@@ -85,10 +86,13 @@
             include "moduls/head.php";
             $routes = array();
             $ruta = null;
+            $infoProduct = null;
             if(isset($_GET["ruta"])){
                 $routes = explode("/",$_GET["ruta"]);
 
                 $item = "rute";
+                $item2 = "ruta";
+
                 $value = $routes[0];
 
                 //URL'S AMIGABLES DE CATEGORIAS
@@ -100,9 +104,19 @@
                     $ruta = $value;
                 }
 
+                //URL'S AMIGABLES DE PRODUCTOS
+                $rutaProductos = ControllerProducts::ctrMostrarInfoProduct($item2,$value);
+
+                if($routes[0] == $rutaProductos["ruta"]){
+                    $infoProduct = $routes[0];
+                }
+
                 //LISTA BLANCA DE URL'S AMIGABLES
-                if($ruta != null){
+                if($ruta != null || $routes[0] == "lo-mas-vendido" || $routes[0] == "lo-mas-visto"){
                     include "moduls/products.php";
+                }
+                else if($infoProduct != null){
+                    include "moduls/infoproduct.php";
                 }
                 else{
                     include "moduls/error404.php";

@@ -6,4 +6,23 @@ class ControllerProducts{
 
 		return $response;
 	}
+
+	//MOSTRAR PRODUCTOS
+
+	static public function ctrMostrarProductos($ordenar){
+		$table = "products";
+
+		$response = ModelProducts::mdlMostrarProductos($table,$ordenar);
+
+		return $response;
+	}
+
+	//MOSTRAR INFO PRODUCTOS
+	static public function ctrMostrarInfoProduct($item2,$value){
+		$table = "products";
+		$response = ModelProducts::mdlMostrarInfoProducto($table,$item2,$value);
+
+
+		return $response;
+	}
 }
