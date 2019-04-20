@@ -9,10 +9,10 @@ class ControllerProducts{
 
 	//MOSTRAR PRODUCTOS
 
-	static public function ctrMostrarProductos($ordenar){
+	static public function ctrMostrarProductos($ordenar,$item,$value,$base,$tope){
 		$table = "products";
 
-		$response = ModelProducts::mdlMostrarProductos($table,$ordenar);
+		$response = ModelProducts::mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope);
 
 		return $response;
 	}

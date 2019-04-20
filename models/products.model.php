@@ -31,8 +31,8 @@ $stmt = null;
 
 	 //MOSTRAR PRODUCTOS
 	 
-	 static public function mdlMostrarProductos($table,$ordenar){
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $table ORDER BY $ordenar DESC LIMIT 4");
+	 static public function mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope){
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $table ORDER BY $ordenar DESC LIMIT $base, $tope");
 		$stmt -> execute();
 
 		return $stmt->fetchAll();
