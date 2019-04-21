@@ -31,11 +31,11 @@ $stmt = null;
 
 	 //MOSTRAR PRODUCTOS
 	 
-	 static public function mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope){
+	 static public function mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope,$modo){
 		if($item != null){
 
 			$stmt = Conexion::conectar()->prepare("SELECT *FROM $table WHERE $item = :$item 
-			ORDER BY $ordenar DESC LIMIT $base, $tope");
+			ORDER BY $ordenar $modo LIMIT $base, $tope");
 
 			$stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
 
@@ -46,7 +46,7 @@ $stmt = null;
 		}else{
 
 			$stmt = Conexion::conectar()->prepare("SELECT *FROM $table 
-			ORDER BY $ordenar DESC LIMIT $base, $tope");
+			ORDER BY $ordenar $modo LIMIT $base, $tope");
 
 			$stmt -> execute();
 
@@ -88,6 +88,28 @@ $stmt = null;
 			$stmt -> execute();
 			return $stmt->fetchAll();
 			}
+			$stmt -> close();
+			$stmt = null;
+		}
+
+		//BUSCADOR
+
+		static public function mdlBuscarProductos($table,$busqueda,$base,$tope,$ordenar,$modo){
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE ruta LIKE '%$busqueda%' 
+			OR titulo LIKE '%$busqueda%' OR titular LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%'
+			ORDER BY $ordenar $modo LIMIT $base, $tope");
+			$stmt -> execute();
+			return $stmt->fetchAll();
+			$stmt -> close();
+			$stmt = null;
+		}
+		//LISTAR PRODUCTOS BUSCADOR
+
+		static public function mdlListarProductosBusqueda($table,$busqueda){
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE ruta LIKE '%$busqueda%' 
+			OR titulo LIKE '%$busqueda%' OR titular LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%'");
+			$stmt -> execute();
+			return $stmt->fetchAll();
 			$stmt -> close();
 			$stmt = null;
 		}

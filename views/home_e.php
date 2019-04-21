@@ -15,6 +15,7 @@
     
     <!-- MANTENER LA RUTA FIJA DEL PROYECTO-->
         <?php 
+            session_start();
             $server = Route::ctrRouteServer();
             $url = Route::ctrRoute();
             
@@ -78,7 +79,7 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <script src="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.min.js"></script>
         <script src="<?php echo $url;?>views/js/main.js"></script>
-        <script src="<?php echo $url;?>views/js/home_e.js"></script>
+        <script src="<?php echo $url;?>views/js/buscador.js"></script>
 
     </head>
     <body id="home4">
@@ -118,6 +119,9 @@
                 }
                 else if($infoProduct != null){
                     include "moduls/infoproduct.php";
+                }
+                else if($routes[0] == "buscador"){
+                    include "moduls/buscador.php";
                 }
                 else{
                     include "moduls/error404.php";

@@ -1,27 +1,3 @@
-<?php 
-$url = Route::ctrRoute();
-$server = Route::ctrRouteServer();
-?>
-<!--=====================================
-BANNER PROMOCIONAL
-======================================-->
-<div class="testimonial parallax-bg2">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                                <div>
-                                    <img src="images/quote/3.png" class="img-responsive" alt=""/>
-                                    <div class="quote-info">
-                                        <h4>Smile Nguyen</h4>
-                                        <cite>Themeforest</cite>	
-                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis odio in faucibus posuere. In eu scelerisque lorem. Mauris lusto in lacus accumsan interdum.Nam mattis sollicitudin vestibulum"</p>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-</div>
 <!--=====================================
 PRODUCT BAR
 ======================================-->
@@ -41,8 +17,8 @@ PRODUCT BAR
 
             <?php
 
-            echo'   <li><a href="'.$url.$routes[0].'/1/recientes">Mas reciente</a></li>
-                    <li><a href="'.$url.$routes[0].'/1/antiguos">Mas antiguo</a></li>';
+            echo'   <li><a href="'.$url.$routes[0].'/1/recientes/'.$routes[3].'">Mas reciente</a></li>
+                    <li><a href="'.$url.$routes[0].'/1/antiguos/'.$routes[3].'">Mas antiguo</a></li>';
                ?>
             </ul>
         </div>
@@ -116,46 +92,22 @@ if(isset($routes[1])){
     $tope=12;
     $modo = "DESC";
 }
+//LLAMADO DE PRODUCTOS POR BUSQUEDA
+$productos = null;
+$listaProductos = null;
 
+$ordenar = "id_product";
+if(isset($routes[3])){
+    $busqueda = $routes[3];
 
-//LLAMADO DE CATEGORIAS Y DESTACADOS
-if($routes[0] == "lo-mas-vendido"){
-    $ordenar = "ventas";
-    $item2 = null;
-    $value2 = null;
-}else if($routes[0] == "lo-mas-visto"){
-    $ordenar = "vistas";
-    $item2 = null;
-    $value2 = null;
-}else{
-    $ordenar = "id_product";
-    $item1 = "rute";
-    $value1 = $routes[0];
-    
-    $categoria = ControllerProducts::ctrMostrarCategorias($item1, $value1);
-    
-    
-    if(!$categoria){
-        $item2 = "id_category";
-        $value2 = $categoria[0]["id_category"];
-    
-    }else{
-    
-        $item2 = "id_category";
-        $value2 = $categoria["id_category"];
-    
-    }
+    $productos = ControllerProducts::ctrBuscarProductos($busqueda,$base,$tope,$ordenar,$modo);
+    $listaProductos = ControllerProducts::ctrListarProductosBusqueda($busqueda);
 }
-
-
-
-$productos = ControllerProducts::ctrMostrarProductos($ordenar,$item2,$value2,$base,$tope,$modo);
-$listaProductos = ControllerProducts::ctrListarProductos($ordenar,$item2,$value2);
 
 if(!$productos){
     echo "<div class='col-xs-12 notfound-404'>
     <h1> <small> Oops!</small></h1>
-    <h2> Aun no hay productos en esta categoria</h2>
+    <h2> Aun no hay productos en esta sección</h2>
     </div>";
 }else{
     echo'<ul class="grid0">';
@@ -220,11 +172,11 @@ if(count($listaProductos) !=0){
                     <em>Página:</em>
                     <ul class="page_nav">';
                     for($i =1; $i<=4; $i++){
-                    echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+                    echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'/'.$routes[2].'/'.$routes[3].'">'.$i.'</a></li>';
                 }
                     echo '<li class="disabled"><a>...</a></li>
-                    <li><a id="item'.$pageProductos.' href="'.$url.$routes[0].'/'.$pageProductos.'">'.$pageProductos.'</a></li>
-                    <li><a href="'.$url.$routes[0].'/2"><i class="fa fa-angle-right" aria-hidden="true">
+                    <li><a id="item'.$pageProductos.' href="'.$url.$routes[0].'/'.$pageProductos.'/'.$routes[2].'/'.$routes[3].'">'.$pageProductos.'</a></li>
+                    <li><a href="'.$url.$routes[0].'/2/'.$routes[2].'/'.$routes[3].'"><i class="fa fa-angle-right" aria-hidden="true">
                     </i></a></li>
                     </ul>
                 </div>
@@ -245,14 +197,14 @@ echo '<div class="pagenav-wrap" style="font-size:18px;">
                 <div class="pull-right">
                     <em>Página:</em>
                     <ul class="page_nav">
-                    <li><a href="'.$url.$routes[0].'/'.($numPagActual-1).'"><i class="fa fa-angle-left " 
+                    <li><a href="'.$url.$routes[0].'/'.($numPagActual-1).'/'.$routes[2].'/'.$routes[3].'"><i class="fa fa-angle-left " 
                     aria-hidden="true"></i></a></li>';
                     for($i =$numPagActual; $i<=($numPagActual+3); $i++){
-                    echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+                    echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'/'.$routes[2].'/'.$routes[3].'">'.$i.'</a></li>';
                 }
                     echo '<li class="disabled"><a>...</a></li>
-                    <li><a id="item'.$pageProductos.' "href="'.$url.$routes[0].'/'.$pageProductos.'">'.$pageProductos.'</a></li>
-                    <li><a href="'.$url.$routes[0].'/'.($numPagActual+1).'"><i class="fa fa-angle-right" aria-hidden="true">
+                    <li><a id="item'.$pageProductos.' "href="'.$url.$routes[0].'/'.$pageProductos.'/'.$routes[2].'/'.$routes[3].'">'.$pageProductos.'</a></li>
+                    <li><a href="'.$url.$routes[0].'/'.($numPagActual+1).'/'.$routes[2].'/'.$routes[3].'"><i class="fa fa-angle-right" aria-hidden="true">
                     </i></a></li>
                     </ul>
                 </div>
@@ -273,16 +225,16 @@ else if($routes[1] != $pageProductos && $routes[1] != 1 && $routes[1] >= ($pageP
                 <div class="pull-right">
                     <em>Página:</em>
                     <ul class="page_nav">
-                    <li><a href="'.$url.$routes[0].'/'.($numPagActual-1).'"><i class="fa fa-angle-left " 
+                    <li><a href="'.$url.$routes[0].'/'.($numPagActual-1).'/'.$routes[2].'/'.$routes[3].'"><i class="fa fa-angle-left " 
                     aria-hidden="true"></i></a></li>
-                    <li><a id="item1" href="'.$url.$routes[0].'/1">1</a></li>
+                    <li><a id="item1" href="'.$url.$routes[0].'/1/'.$routes[2].'/'.$routes[3].'">1</a></li>
                     <li class="disabled"><a>...</a></li>'
                     ;
                     for($i =$numPagActual; $i<=($numPagActual+3); $i++){
-                        echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+                        echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'/'.$routes[2].'/'.$routes[3].'">'.$i.'</a></li>';
                     }
                     echo '
-                    <li><a href="'.$url.$routes[0].'/'.($numPagActual+1).'"><i class="fa fa-angle-right" aria-hidden="true">
+                    <li><a href="'.$url.$routes[0].'/'.($numPagActual+1).'/'.$routes[2].'/'.$routes[3].'"><i class="fa fa-angle-right" aria-hidden="true">
                     </i></a></li>
                     </ul>
                 </div>
@@ -302,13 +254,13 @@ else{
                 <div class="pull-right">
                     <em>Página:</em>
                     <ul class="page_nav">
-                    <li><a href="'.$url.$routes[0].'/'.($numPagActual-1).'"><i class="fa fa-angle-left " 
+                    <li><a href="'.$url.$routes[0].'/'.($numPagActual-1).'/'.$routes[2].'/'.$routes[3].'"><i class="fa fa-angle-left " 
                     aria-hidden="true"></i></a></li>
-                    <li><a id="item1" href="'.$url.$routes[0].'/1">1</a></li>
+                    <li><a id="item1" href="'.$url.$routes[0].'/1/'.$routes[2].'/'.$routes[3].'">1</a></li>
                     <li class="disabled"><a>...</a></li>'
                     ;
                     for($i =$pageProductos-3; $i<=$pageProductos; $i++){
-                    echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+                    echo '<li><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'/'.$routes[2].'/'.$routes[3].'">'.$i.'</a></li>';
                 }
                     echo '
                      </ul>
@@ -329,7 +281,7 @@ else{
                     <em>Página:</em>
                     <ul class="page_nav">';
                     for($i =1; $i<=$pageProductos; $i++){
-                    echo '<li ><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+                    echo '<li ><a id="item'.$i.'" href="'.$url.$routes[0].'/'.$i.'/'.$routes[2].'/'.$routes[3].'">'.$i.'</a></li>';
                 }
                     echo '</ul>
                 </div>
@@ -351,16 +303,10 @@ var pagActiva = $(".pagActiva").html();
 
     var url = window.location.href;
 
-var indice = url.split("/");
+    var indice = url.split("/");
 
-var pagActual = indice[5];
-if(isNaN(pagActual)){
-    $("#item1").addClass("active");
-}else{
-    $("#item"+pagActual).addClass("active");
-}
-
-
+    var pagActual = indice[5];
+        $("#item"+pagActual).addClass("active");
     
     
 </script>

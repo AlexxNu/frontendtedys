@@ -59,9 +59,10 @@ if($titulosModulos[0] == "PRODUCTOS DESTACADOS"){
 
 $ordenar = "ventas";
 $item = null;
-    $value= null;
+$value= null;
+$modo = "DESC";
 
-$ventas = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope);
+$ventas = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope,$modo);
 }
 
 if($titulosModulos[1] == "LO MAS VISTO"){
@@ -69,8 +70,8 @@ if($titulosModulos[1] == "LO MAS VISTO"){
     $ordenar = "vistas";
     $item = null;
     $value= null;
-    
-    $vistas = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope);
+    $modo = "DESC";
+    $vistas = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope,$modo);
     }
 
  $modulos = array($ventas,$vistas);   

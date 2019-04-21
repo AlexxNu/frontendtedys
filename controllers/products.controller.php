@@ -9,10 +9,10 @@ class ControllerProducts{
 
 	//MOSTRAR PRODUCTOS
 
-	static public function ctrMostrarProductos($ordenar,$item,$value,$base,$tope){
+	static public function ctrMostrarProductos($ordenar,$item,$value,$base,$tope,$modo){
 		$table = "products";
 
-		$response = ModelProducts::mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope);
+		$response = ModelProducts::mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope,$modo);
 
 		return $response;
 	}
@@ -34,4 +34,20 @@ class ControllerProducts{
 
 		return $response;
 	}
+	//BUSCADOR
+	static public function ctrBuscarProductos($busqueda,$base,$tope,$ordenar,$modo){
+		$table = "products";
+
+		$response = ModelProducts::mdlBuscarProductos($table,$busqueda,$base,$tope,$ordenar,$modo);
+
+		return $response;
+	}
+	//LISTAR PRODUCTOS BUSCADOR
+	static public function ctrListarProductosBusqueda($busqueda){
+		$table = "products";
+
+		$response = ModelProducts::mdlListarProductosBusqueda($table,$busqueda);
+
+		return $response;
+	}	
 }
