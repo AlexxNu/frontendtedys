@@ -100,6 +100,12 @@ a:focus {
     margin-top: -120px;
 }
 
+.fondoBreadcrumb {
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0);
+    text-transform: uppercase;
+}
+
 
 /* 2. HEADER */
 
@@ -5287,4 +5293,14 @@ label.css-label {
         float: none !important;
     }
     /*new*/
+}
+
+.page_nav li a.active {
+    color: #ffcc01;
+    font-weight: bold;
+}
+
+.page_nav li.active {
+    color: #ffcc01;
+    font-weight: bold;
 }

@@ -1,9 +1,9 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
 
     "use strict";
 
- 
+
     //SLIDER REVOLUTION
     jQuery('.tp-banner').show().revolution({
         dottedOverlay: "none",
@@ -133,20 +133,20 @@ $(document).ready(function () {
         slidesToShow: 2,
         slidesToScroll: 1,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
     });
 
     // PRODUCTS CAROUSEL
@@ -157,20 +157,20 @@ $(document).ready(function () {
         slidesToShow: 2,
         slidesToScroll: 1,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
     });
 
     // PRODUCTS CAROUSEL
@@ -181,20 +181,20 @@ $(document).ready(function () {
         slidesToShow: 4,
         slidesToScroll: 1,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
     });
 
     // QUOTE CAROUSEL
@@ -222,20 +222,20 @@ $(document).ready(function () {
         slidesToShow: 6,
         slidesToScroll: 1,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }]
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        }]
     });
 
     // PRODUCT HOME CAROUSEL
@@ -249,20 +249,20 @@ $(document).ready(function () {
         slidesToShow: 5,
         slidesToScroll: 1,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
     });
 
     // CLIENT CAROUSEL 2
@@ -292,7 +292,7 @@ $(document).ready(function () {
 
 
     // ACCORDION
-    $('#accordion').find('.accordion-toggle').on("click", function () {
+    $('#accordion').find('.accordion-toggle').on("click", function() {
         //Expand or collapse this panel
         $(this).next().slideToggle('fast');
 
@@ -301,27 +301,31 @@ $(document).ready(function () {
 
     });
 
+
+
+
+
     // CHECKOUT MASSAGE
-    $('#create-act').on("click", function () {
+    $('#create-act').on("click", function() {
         $('.create-account').toggle("slow");
     });
-    $('#diff-address').on("click", function () {
+    $('#diff-address').on("click", function() {
         $('.shipping-address').toggle("slow");
     });
 
-    $('#direct-transfer').on("click", function () {
+    $('#direct-transfer').on("click", function() {
         $('#direct-transfer-msg').show("slow");
         $('#cheque-transfer-msg').hide();
         $('#paypal-transfer-msg').hide();
     });
 
-    $('#cheque-transfer').on("click", function () {
+    $('#cheque-transfer').on("click", function() {
         $('#cheque-transfer-msg').show("slow");
         $('#direct-transfer-msg').hide();
         $('#paypal-transfer-msg').hide();
     });
 
-    $('#paypal-transfer').on("click", function () {
+    $('#paypal-transfer').on("click", function() {
         $('#paypal-transfer-msg').show("slow");
         $('#cheque-transfer-msg').hide();
         $('#direct-transfer-msg').hide();
@@ -331,10 +335,10 @@ $(document).ready(function () {
     $("select").selectBoxIt();
 
     // STICKY HEADER
-    $("header").sticky({topSpacing: 0});
+    $("header").sticky({ topSpacing: 0 });
 
     // BACKTOTOP
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         if ($(this).scrollTop() > 200) {
             $("#backtotop").addClass("active");
         } else {
@@ -342,7 +346,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#backtotop').on("click", function () {
+    $('#backtotop').on("click", function() {
         $('body,html').animate({
             scrollTop: 0
         }, 2000);
@@ -350,28 +354,28 @@ $(document).ready(function () {
     });
 
     // SETTINGS PANEL
-    $('.btn-settings').on('click', function () {
+    $('.btn-settings').on('click', function() {
         $(this).parent().toggleClass('active');
     });
 
-    $('.switch-handle').on('click', function () {
+    $('.switch-handle').on('click', function() {
         $(this).toggleClass('active');
         $('.body').toggleClass('boxed');
     });
 
-    $('.color-list div').on('click', function () {
+    $('.color-list div').on('click', function() {
         if ($(this).hasClass('active'))
             return false;
         $('link.color-scheme-link').remove();
         $(this).addClass('active').siblings().removeClass('active');
         var src = $(this).attr('data-src'),
-                colorScheme = $('<link class="color-scheme-link" rel="stylesheet" />');
+            colorScheme = $('<link class="color-scheme-link" rel="stylesheet" />');
         colorScheme
-                .attr('href', src)
-                .appendTo('head');
+            .attr('href', src)
+            .appendTo('head');
     });
 
-    $('.reset').on('click', function () {
+    $('.reset').on('click', function() {
         $(".bg-list div").removeClass('active');
         $(".switch-handle").removeClass('active');
         $(".color-list div").removeClass('active');
@@ -380,63 +384,63 @@ $(document).ready(function () {
             return false;
         $('link.color-scheme-link').remove();
         var src = $(this).attr('data-src'),
-                colorScheme = $('<link class="color-scheme-link" rel="stylesheet" />');
+            colorScheme = $('<link class="color-scheme-link" rel="stylesheet" />');
         colorScheme
-                .attr('href', src)
-                .appendTo('head');
+            .attr('href', src)
+            .appendTo('head');
     });
 
-    $('.reset span').on('click', function () {
+    $('.reset span').on('click', function() {
         $("body").removeClass("bg-shattered bg-vichy bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-wood_pattern");
     });
 
-    $('.bg-wood_pattern').on('click', function () {
+    $('.bg-wood_pattern').on('click', function() {
         $("body").removeClass("bg-shattered bg-vichy bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-wood_pattern");
     });
 
-    $('.bg-shattered').on('click', function () {
+    $('.bg-shattered').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-vichy bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-shattered");
     });
 
-    $('.bg-vichy').on('click', function () {
+    $('.bg-vichy').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-vichy");
     });
 
-    $('.bg-random-grey-variations').on('click', function () {
+    $('.bg-random-grey-variations').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-vichy bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-random-grey-variations");
     });
 
-    $('.bg-irongrip').on('click', function () {
+    $('.bg-irongrip').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-vichy bg-random-grey-variations bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-irongrip");
     });
 
-    $('.bg-gplaypattern').on('click', function () {
+    $('.bg-gplaypattern').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-random-grey-variations bg-irongrip bg-vichy bg-diamond_upholstery bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-gplaypattern");
     });
 
-    $('.bg-diamond_upholstery').on('click', function () {
+    $('.bg-diamond_upholstery').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-random-grey-variations bg-irongrip bg-gplaypattern bg-vichy bg-denim bg-crissXcross bg-climpek");
         $("body").addClass("bg-diamond_upholstery");
     });
 
-    $('.bg-denim').on('click', function () {
+    $('.bg-denim').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-vichy bg-crissXcross bg-climpek");
         $("body").addClass("bg-denim");
     });
 
-    $('.bg-crissXcross').on('click', function () {
+    $('.bg-crissXcross').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-vichy bg-climpek");
         $("body").addClass("bg-crissXcross");
     });
 
-    $('.bg-climpek').on('click', function () {
+    $('.bg-climpek').on('click', function() {
         $("body").removeClass("bg-wood_pattern bg-shattered bg-vichy bg-random-grey-variations bg-irongrip bg-gplaypattern bg-diamond_upholstery bg-denim bg-crissXcross ");
         $("body").addClass("bg-climpek");
     });
@@ -448,10 +452,10 @@ $(document).ready(function () {
         min: 69,
         max: 199,
         values: [69, 199],
-        create: function () {
+        create: function() {
             $("#amount").val("$69 - $199");
         },
-        slide: function (event, ui) {
+        slide: function(event, ui) {
             $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
             var mi = ui.values[0];
             var mx = ui.values[1];
@@ -460,7 +464,7 @@ $(document).ready(function () {
 });
 
 //Slider Product
-$(document).ready(function () {
+$(document).ready(function() {
     var sync1 = $(".sync1");
     var sync2 = $(".sync2");
 
@@ -485,7 +489,7 @@ $(document).ready(function () {
         itemsMobile: [479, 2],
         pagination: false,
         responsiveRefreshRate: 100,
-        afterInit: function (el) {
+        afterInit: function(el) {
             el.find(".owl-item").eq(0).addClass("synced");
         }
     });
@@ -493,16 +497,16 @@ $(document).ready(function () {
     function syncPosition(el) {
         var current = this.currentItem;
         $(".sync2")
-                .find(".owl-item")
-                .removeClass("synced")
-                .eq(current)
-                .addClass("synced")
+            .find(".owl-item")
+            .removeClass("synced")
+            .eq(current)
+            .addClass("synced")
         if ($(".sync2").data("owlCarousel") !== undefined) {
             center(current)
         }
     }
 
-    $(".sync2").on("click", ".owl-item", function (e) {
+    $(".sync2").on("click", ".owl-item", function(e) {
         e.preventDefault();
         var number = $(this).data("owlItem");
         sync1.trigger("owl.goTo", number);
@@ -548,15 +552,15 @@ $(document).ready(function () {
 
 
 // SIDEMENU
-$(".nav-trigger").on("click", function () {
+$(".nav-trigger").on("click", function() {
     $(".side-menu").toggleClass("sm-show");
     $("body").toggleClass("sm-hide-body");
 });
 
 // FEATURED PRODUCTS
-$(window).load(function () {
+$(window).load(function() {
     "use strict";
-//    $('.modal.fade.in #popup-product').royalSlider("updateSliderSize", true);
+    //    $('.modal.fade.in #popup-product').royalSlider("updateSliderSize", true);
     /* Loading Script */
     $('#loader').fadeOut("slow");
 
@@ -566,8 +570,8 @@ $(window).load(function () {
         itemSelector: '.isotope-item'
     });
     var $optionSets = $('.filter'),
-            $optionLinks = $optionSets.find('a');
-    $optionLinks.click(function () {
+        $optionLinks = $optionSets.find('a');
+    $optionLinks.click(function() {
         var $this = $(this);
         if ($this.hasClass('selected')) {
             return false;
@@ -576,8 +580,8 @@ $(window).load(function () {
         $optionSet.find('.selected').removeClass('selected');
         $this.addClass('selected');
         var options = {},
-                key = $optionSet.attr('data-option-key'),
-                value = $this.attr('data-option-value');
+            key = $optionSet.attr('data-option-key'),
+            value = $this.attr('data-option-value');
         value = value === 'false' ? false : value;
         options[key] = value;
         if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {

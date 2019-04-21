@@ -1,4 +1,5 @@
 <?php 
+$url = Route::ctrRoute();
 $server = Route::ctrRouteServer();
 ?>
 <!-- PRELOADER -->
@@ -73,7 +74,7 @@ $server = Route::ctrRouteServer();
                                     <span class="icon-bar"></span>
                                 </button>
                                 <!-- Logo -->
-                                <a class="navbar-brand" href="./index.html"><img src="<?php echo $server;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
+                                <a class="navbar-brand" href="<?php echo $url;?>"><img src="<?php echo $server;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
                             </div>
                             <!-- Cart & Search -->
                             <div class="header-xtra pull-right">
@@ -146,7 +147,7 @@ $server = Route::ctrRouteServer();
                                             
                                                 echo '<li>
                                                 <div>
-                                                    <a href="'.$value["rute"].'">
+                                                    <a href="'.$url.$value["rute"].'">
                                                     <h5>
                                                         '.$value["category"].'
                                                     </h5>

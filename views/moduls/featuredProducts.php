@@ -52,18 +52,25 @@ estamos seguros que encontraras lo que buscas.");
 
 $rutaModulos = array("lo-mas-vendido","lo-mas-visto");
 
+$base=0;
+$tope=4;
+
 if($titulosModulos[0] == "PRODUCTOS DESTACADOS"){
 
 $ordenar = "ventas";
+$item = null;
+    $value= null;
 
-$ventas = ControllerProducts::ctrMostrarProductos($ordenar);
+$ventas = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope);
 }
 
 if($titulosModulos[1] == "LO MAS VISTO"){
 
     $ordenar = "vistas";
+    $item = null;
+    $value= null;
     
-    $vistas = ControllerProducts::ctrMostrarProductos($ordenar);
+    $vistas = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope);
     }
 
  $modulos = array($ventas,$vistas);   

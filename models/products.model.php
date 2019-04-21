@@ -31,13 +31,31 @@ $stmt = null;
 
 	 //MOSTRAR PRODUCTOS
 	 
-	 static public function mdlMostrarProductos($table,$ordenar){
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $table ORDER BY $ordenar DESC LIMIT 4");
-		$stmt -> execute();
+	 static public function mdlMostrarProductos($table,$ordenar,$item,$value,$base,$tope){
+		if($item != null){
 
-		return $stmt->fetchAll();
+			$stmt = Conexion::conectar()->prepare("SELECT *FROM $table WHERE $item = :$item 
+			ORDER BY $ordenar DESC LIMIT $base, $tope");
+
+			$stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT *FROM $table 
+			ORDER BY $ordenar DESC LIMIT $base, $tope");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
 
 		$stmt -> close();
+
 		$stmt = null;
 
 	 }
@@ -54,4 +72,23 @@ $stmt = null;
 		$stmt = null;
 
 	 }
+
+	 //LISTAR PRODUCTOS
+
+		static public function mldListarProductos($table,$ordenar,$item,$value){
+			if($item != null){
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE $item= :$item 
+			ORDER BY $ordenar DESC");
+			$stmt -> bindParam(":".$item,$value,PDO::PARAM_STR);
+			$stmt -> execute();
+			return $stmt->fetchAll();
+			}else{
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $table ORDER BY $ordenar DESC");
+		
+			$stmt -> execute();
+			return $stmt->fetchAll();
+			}
+			$stmt -> close();
+			$stmt = null;
+		}
  }
