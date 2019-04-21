@@ -4,9 +4,6 @@ $server = Route::ctrRouteServer();
 ?>
 <!--=====================================
 BANNER PROMOCIONAL
-======================================-->
-<div class="testimonial parallax-bg2">
-
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
@@ -24,8 +21,6 @@ BANNER PROMOCIONAL
 </div>
 <!--=====================================
 PRODUCT BAR
-======================================-->
-<div class="container-fluid well well-sm barraProductos">
 
 <div class="container">
     
@@ -57,7 +52,7 @@ PRODUCT BAR
 
 </div>
 
-		<!--=====================================
+		<!=====================================
 		PRODUCT LIST
 		======================================-->
 
