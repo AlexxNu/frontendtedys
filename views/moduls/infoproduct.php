@@ -76,15 +76,29 @@
                                         <div class="ps-header">
                                         <?php 
                                         if($infoproducto["oferta"]==0){
+                                            if($infoproducto["nuevo"]==0){
                                             echo '<h3>'.$infoproducto["titulo"].'</h3>';
-                                            
                                         }else{
-                                            echo '<span class="badge offer">-50%</span>';
-                                            echo '<h3>'.$infoproducto["titulo"].'</h3>';
-                                        }
                                             
-                                            ?>
-                                            <div class="ratings-wrap">
+                                            echo '<h3>'.$infoproducto["titulo"].'</h3>
+                                            <span class="label label-warning">NUEVO</span>"
+                                            <div class="ps-price"> $'.$infoproducto["precioOferta"].'</div>';
+                                        }
+                                        }else{
+                                            if($infoproducto["nuevo"]==0){
+                                            echo '<span class="badge offer">-'.$infoproducto["descuentoOferta"].'%</span>
+                                            <h3>'.$infoproducto["titulo"].'</h3><br>
+                                            <div class="ps-price"><span>$'.$infoproducto["precio"].'</span> $'.$infoproducto["precioOferta"].'</div>';
+                                        }else{
+                                            echo '<span class="badge offer">-'.$infoproducto["descuentoOferta"].'%</span>
+                                            <h3>'.$infoproducto["titulo"].'</h3>
+                                            <span class="label label-warning">NUEVO</span>"
+                                            <div class="ps-price"><span>$'.$infoproducto["precio"].'</span> $'.$infoproducto["precioOferta"].'</div>';
+                                              
+                                        }
+                                    }
+                                            
+                                        /*<div class="ratings-wrap">
                                                 <div class="ratings">
                                                     <span class="act fa fa-star"></span>
                                                     <span class="act fa fa-star"></span>
@@ -93,8 +107,10 @@
                                                     <span class="act fa fa-star"></span>
                                                 </div>
                                                 <em>(6 reviews)</em>
-                                            </div>
-                                            <div class="ps-price"><span>$ 200.00</span> $ 99.00</div>
+                                            </div>*/
+                                            ?>
+                                            
+                                            
                                         </div>
                                         <p>Nam placerat sem lacus, ut vestibulum enim pulvinar vitae. Sed sodales, tortor et auctor volutpat, nisl est sollicex, nec sollicitudin risus odio mollis ligula. Suspendisse eget augue purus. Proin a mauris ac arcu volutpat mattis ac eu odio. Fusce at porttitor orci, nec accumsan nunc. Quisque tempor massa turpis, a congue mauris fermentum in. Vivamus molestie ac elit nec semper. Aenean dolor ipsum, aliquam vitae mi iaculis, congue finibus magna.</p>
                                         <div class="ps-stock">
@@ -371,3 +387,14 @@
             </div>
 
             <div class="clearfix space20"></div>
+
+
+<!-- SI SE QUITAN LAS MIGAS DE PAN, QUITAR ESTO-->
+<script>
+var pagActiva = $(".pagActiva").html();
+    if (pagActiva != null) {
+        var regPagActiva = pagActiva.replace(/-/g, " ");
+        $(".pagActiva").html(regPagActiva);
+    }
+    
+</script>
