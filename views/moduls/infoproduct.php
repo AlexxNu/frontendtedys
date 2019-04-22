@@ -15,6 +15,8 @@
             $value= $routes[0];
             $infoproducto = ControllerProducts::ctrMostrarInfoProduct($item,$value);
 
+            $multimedia = json_decode($infoproducto["multimedia"],true);
+
             
             ?>
 
@@ -26,60 +28,40 @@
                             <div class="row">
                                 <div class="col-md-5 col-sm-6">                                    
                                     <div class="owl-carousel prod-slider sync1">
-                                        <div class="item"> 
-                                            <img src="images/products/single/1-small.jpg" alt="">
-                                            <a href="images/products/single/1.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/2-small.jpg" alt=""> 
-                                            <a href="images/products/single/2.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/3-small.jpg" alt=""> 
-                                            <a href="images/products/single/3.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/4-small.jpg" alt=""> 
-                                            <a href="images/products/single/4.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/1-small.jpg" alt=""> 
-                                            <a href="images/products/single/1.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/2-small.jpg" alt=""> 
-                                            <a href="images/products/single/2.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/3-small.jpg" alt=""> 
-                                            <a href="images/products/single/3.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                        <div class="item"> 
-                                            <img src="images/products/single/4-small.jpg" alt=""> 
-                                            <a href="images/products/single/4.jpg" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
-                                        </div>
-                                    </div>
+                                        
 
-                                    <div  class="owl-carousel sync2">
-                                        <div class="item"> <img src="images/products/single/1.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/2.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/3.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/4.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/1.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/2.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/3.jpg" alt=""> </div>
-                                        <div class="item"> <img src="images/products/single/4.jpg" alt=""> </div>
+                                        <?php 
+                                        if($multimedia != null){
+                                        for($i=0; $i< count($multimedia);$i++){
+                                            echo '<div class="item">
+                                            <img src="'.$server.$multimedia[$i]["foto"].'">
+                                            <a href="'.$server.$multimedia[$i]["foto"].'" rel="prettyPhoto[gallery2]" title="Product" class="caption-link"><i class="fa fa-arrows-alt"></i></a>
+                                        </div>';
+                                        }
+                                     
+                                   echo' </div>
+
+                                    <div  class="owl-carousel sync2">';
+                              
+                                        for($i=0; $i< count($multimedia);$i++){
+                                            echo '<div class="item"> <img src="'.$server.$multimedia[$i]["foto"].'" alt=""></div>';
+                                        }
+                                    }
+                                        ?> 
+                                        
+                                       
                                     </div>
                                 </div>
                                 <div class="col-md-7 col-sm-6">
                                     <div class="product-single">
                                         <div class="ps-header">
                                         <?php 
+                                        //TITULO DEL PRODUCTO
                                         if($infoproducto["oferta"]==0){
                                             if($infoproducto["nuevo"]==0){
                                             echo '<h3>'.$infoproducto["titulo"].'</h3>';
                                         }else{
-                                            
+                                            //PRECIO DEL PRODUCTO
                                             echo '<h3>'.$infoproducto["titulo"].'</h3>
                                             <span class="label label-warning">NUEVO</span>"
                                             <div class="ps-price"> $'.$infoproducto["precioOferta"].'</div>';
@@ -98,31 +80,55 @@
                                         }
                                     }
                                             
-                                        /*<div class="ratings-wrap">
-                                                <div class="ratings">
-                                                    <span class="act fa fa-star"></span>
-                                                    <span class="act fa fa-star"></span>
-                                                    <span class="act fa fa-star"></span>
-                                                    <span class="act fa fa-star"></span>
-                                                    <span class="act fa fa-star"></span>
-                                                </div>
-                                                <em>(6 reviews)</em>
-                                            </div>*/
-                                            ?>
-                                            
-                                            
+                                     
+
+                                        //DESCRIPCION DEL PRODUCTO  
+                                          
+                                        echo ' </div>
+                                        <p>'.$infoproducto["descripcion"].'</p>
+                                        <div class="ratings-wrap">
+                                        <div class="ratings">
+                                            <span class="act fa fa-star"></span>
+                                            <span class="act fa fa-star"></span>
+                                            <span class="act fa fa-star"></span>
+                                            <span class="act fa fa-star"></span>
+                                            <span class="act fa fa-star"></span>
                                         </div>
-                                        <p>Nam placerat sem lacus, ut vestibulum enim pulvinar vitae. Sed sodales, tortor et auctor volutpat, nisl est sollicex, nec sollicitudin risus odio mollis ligula. Suspendisse eget augue purus. Proin a mauris ac arcu volutpat mattis ac eu odio. Fusce at porttitor orci, nec accumsan nunc. Quisque tempor massa turpis, a congue mauris fermentum in. Vivamus molestie ac elit nec semper. Aenean dolor ipsum, aliquam vitae mi iaculis, congue finibus magna.</p>
-                                        <div class="ps-stock">
-                                            Available: <a href="#">In Stock</a>
-                                        </div>
+                                        <em>Promedio de calificacion</em>
+                                    </div>
                                         <div class="sep"></div>
+                                <div class="ps-color">
+                                   
+                            <div class="contact-info space50">
+                                
+                                    <div class="media">
+                                        <i class="pull-left fa fa-home"></i>
+                                        <div class="media-body">
+                                            <strong>Dias habiles:</strong><br><b>'.$infoproducto["entrega"].'</b> dias habiles para su entrega.</div>
+                                    </div>
+                                    <div class="media">
+                                        <i class="pull-left fa fa-shopping-cart"></i>
+                                        <div class="media-body">
+                                            <strong>Ventas:</strong><br><b>'.$infoproducto["ventas"].'</b> Ventas.</div>
+                                    </div>
+                                    <div class="media">
+                                        <i class="pull-left fa fa-eye"></i>
+                                        <div class="media-body">
+                                            <strong>Vistas:</strong><br>Visto por <b>'.$infoproducto["vistas"].'</b> personas.</div>
+                                    </div>
+                                </div>
+                                </div>
+                                        ';
+
+                                            ?>
+                                            <div class="sep"></div>
                                         
                                         <div class="space10"></div>
+                                       
                                         <div class="row select-wraps">
                                             
                                             <div class="col-md-5 col-sm-5">
-                                                <p>Quantity<span>*</span></p>
+                                                <p>Cantidad<span>*</span></p>
                                                 <select>
                                                     <option>1</option>
                                                     <option>2</option>
@@ -143,7 +149,7 @@
                                         </div>
                                         <div class="space20"></div>
                                         <div class="sep"></div>
-                                        <a class="addtobag" href="#">Add to Bag</a>
+                                        <a class="addtobag" href="#">Agregar al Carrito</a>
                                     </div>
                                 </div>
                             </div>
@@ -151,24 +157,32 @@
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Product Description</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Customer Review</a></li>
-                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Product Tags</a></li>
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripcion del producto</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Opiniones de los clientes</a></li>
                                 </ul>
                                 <!-- Tab panes -->
+
+                               
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="home">
-                                        <b>Sed sodales, tortor et auctor volutpat</b>
-                                        <div class="space10"></div>
-                                        <p>Nam pellentesque tincidunt sem vehicula viverra. Mauris cursus nisl at ornare pharetra. In ullamcorper pellentesque justo quis porta. Nunc venenatis efficitur cursus. Ut id nisi hendrerit, lobortis ante ut, aliquam lacus. Praesent convallis eget arcu sit amet molestie. Phasellus ac ex ac metus hendrerit vestibulum in quis velit. Donec lacinia sit amet leo sit amet semper. Nunc molestie tincidunt odio vel pellentesque. Mauris maximus lorem quis lorem eleifend, ut mollis diam fermentum. Integer dapibus eros sed sagittis auctor. Duis at luctus diam. Ut non ullamcorper nibh. Suspendisse eget fringilla risus.</p>
-                                        <div class="space20"></div>
-                                        <ul class="dot">
-                                            <li>100% cotton</li>
-                                            <li>Machine wash warm imported</li>
-                                            <li>Art.No. 54-0032</li>
-                                        </ul>
-                                        <div class="space20"></div>
-                                        <p>Product code: SW448</p>
+                                    <?php 
+                                $detalles = json_decode($infoproducto["detalles"],true);
+
+                                echo '<div class="space10"></div>
+                                <p>'.$infoproducto["descripcion"].'</p>
+                                <div class="space20"></div>
+                                <ul class="dot">';
+                                if($detalles["Tamano"] != null){
+                                           echo'<li>Tamaño: '.$detalles["Tamano"].'</li>';
+                                        }
+                                if($detalles["Color"] != null){
+                                            echo'<li>Color: '.$detalles["Color"].'</li>';
+                                        }
+                                       echo' </ul>
+                                <div class="space20"></div>';
+                                ?>
+                                        
+                                        
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="profile">
                                         <div class="reviews-tab">
@@ -214,14 +228,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="messages">
-                                        <p>Add Your Tags:</p>
-                                        <form class="form-tags">
-                                            <input type="text"><br>
-                                            <span>Use spaces to separate tags. Use single quotes (') for phrases.</span><br>
-                                            <button type="submit" class="btn-black">Add Tag</button>
-                                        </form>
-                                    </div>
+                                   
                                 </div>
                             </div>
                             <div class="clearfix space40"></div>
@@ -233,7 +240,7 @@
                                             <div class="product-item">
                                                 <div class="item-thumb">
                                                     <span class="badge new">New</span>
-                                                    <img src="images/products/fashion/5.jpg" class="img-responsive" alt=""/>
+                                                    <img src="<?php echo $server; ?>views/images/products/fashion/5.jpg" class="img-responsive" alt=""/>
                                                     <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                                                     <div class="product-overlay">
                                                         <a href="#" class="addcart fa fa-shopping-cart"></a>
@@ -255,7 +262,7 @@
                                         <div class="pc-wrap">
                                             <div class="product-item">
                                                 <div class="item-thumb">
-                                                    <img src="images/products/fashion/15.jpg" class="img-responsive" alt=""/>
+                                                    <img src="<?php echo $server; ?>views/images/products/fashion/15.jpg" class="img-responsive" alt=""/>
                                                     <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                                                     <div class="product-overlay">
                                                         <a href="#" class="addcart fa fa-shopping-cart"></a>
@@ -278,7 +285,7 @@
                                             <div class="product-item">
                                                 <div class="item-thumb">
                                                     <span class="badge offer">-50%</span>
-                                                    <img src="images/products/accessories/8.jpg" class="img-responsive" alt=""/>
+                                                    <img src="<?php echo $server; ?>views/images/products/accessories/8.jpg" class="img-responsive" alt=""/>
                                                     <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                                                     <div class="product-overlay">
                                                         <a href="#" class="addcart fa fa-shopping-cart"></a>
@@ -300,7 +307,7 @@
                                         <div class="pc-wrap">
                                             <div class="product-item">
                                                 <div class="item-thumb">
-                                                    <img src="images/products/fashion/18.jpg" class="img-responsive" alt=""/>
+                                                    <img src="<?php echo $server; ?>views/images/products/fashion/18.jpg" class="img-responsive" alt=""/>
                                                     <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                                                     <div class="product-overlay">
                                                         <a href="#" class="addcart fa fa-shopping-cart"></a>
@@ -322,7 +329,7 @@
                                         <div class="pc-wrap">
                                             <div class="product-item">
                                                 <div class="item-thumb">
-                                                    <img src="images/products/fashion/10.jpg" class="img-responsive" alt=""/>
+                                                    <img src="<?php echo $server; ?>views/images/products/fashion/10.jpg" class="img-responsive" alt=""/>
                                                     <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                                                     <div class="product-overlay">
                                                         <a href="#" class="addcart fa fa-shopping-cart"></a>
@@ -344,7 +351,7 @@
                                         <div class="pc-wrap">
                                             <div class="product-item">
                                                 <div class="item-thumb">
-                                                    <img src="images/products/accessories/5.jpg" class="img-responsive" alt=""/>
+                                                    <img src="<?php echo $server; ?>views/images/products/accessories/5.jpg" class="img-responsive" alt=""/>
                                                     <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                                                     <div class="product-overlay">
                                                         <a href="#" class="addcart fa fa-shopping-cart"></a>
@@ -372,11 +379,11 @@
                                     <div class="related-posts">
                                         <h5>Recently Viewed</h5>
                                         <ul>
-                                            <li><a href="./single-product.html"><img src="images/products/fashion/1.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="images/products/fashion/2.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="images/products/fashion/3.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="images/products/fashion/4.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="images/products/fashion/5.jpg" class="img-responsive" alt=""/></a></li>
+                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/1.jpg" class="img-responsive" alt=""/></a></li>
+                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/2.jpg" class="img-responsive" alt=""/></a></li>
+                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/3.jpg" class="img-responsive" alt=""/></a></li>
+                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/4.jpg" class="img-responsive" alt=""/></a></li>
+                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/5.jpg" class="img-responsive" alt=""/></a></li>
                                         </ul>
                                     </div>
                                 </div>

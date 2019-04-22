@@ -99,7 +99,11 @@ if(isset($routes[1])){
             $_SESSION["ordenar"] = $modo;
         }
     }else{
-        $modo =$_SESSION["ordenar"];
+        if(isset($_SESSION["ordenar"])){
+            $modo =$_SESSION["ordenar"];
+        }else{
+            $modo = "DESC";
+        }
         
     }
     $base=($routes[1] - 1)*12;
