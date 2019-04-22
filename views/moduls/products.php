@@ -4,6 +4,9 @@ $server = Route::ctrRouteServer();
 ?>
 <!--=====================================
 BANNER PROMOCIONAL
+======================================-->
+<div class="testimonial parallax-bg2">
+
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
@@ -21,6 +24,8 @@ BANNER PROMOCIONAL
 </div>
 <!--=====================================
 PRODUCT BAR
+======================================-->
+<div class="container-fluid well well-sm barraProductos">
 
 <div class="container">
     
@@ -52,7 +57,7 @@ PRODUCT BAR
 
 </div>
 
-		<!=====================================
+		<!--=====================================
 		PRODUCT LIST
 		======================================-->
 
@@ -67,20 +72,15 @@ PRODUCT BAR
 			======================================-->
 
             
-			<div class="pagenav-wrap">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                    <ul class="breadcrumb fondoBreadcrumb">
+			<div class="bcrumbs">
+                <div class="container">
+                    <ul>
+                        <li><a href="<?php echo $url; ?>">INICIO</a></li>
+                        <li class="active pagActiva" style="text-transform:uppercase; color:#FFCC01;"><?php echo $routes[0]; ?></li>
+                    </ul>
+                </div>
+            </div>
 
-<li><a href="<?php echo $url; ?>">INICIO</li></a>
-<li class="active pagActiva"><?php echo $routes[0]; ?></li>
-</ul> 
-                                    </div>
-                                    
-
-                                   
-                                </div>
-                            </div>
 			
 <?php 
 //LLAMADO DE PAGINACION

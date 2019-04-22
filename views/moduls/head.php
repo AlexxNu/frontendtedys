@@ -65,10 +65,10 @@ $server = Route::ctrRouteServer();
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-4">
-                    <p class="no-margin top-welcome">Welcome to our online store !</p>
+                    <p class="no-margin top-welcome">Bienvenido a Tedys Toys</p>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <a class="navbar-brand" href="./index.html"><img src="<?php echo $server;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
+                    <a class="navbar-brand" href="<?php echo $url;?>"><img src="<?php echo $server;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="topcart pull-right">
@@ -139,7 +139,7 @@ $server = Route::ctrRouteServer();
                                     </ul>
                                 </li>
                                 <li class="dropdown mmenu">
-                                    <a href="./categories-grid.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Women</a>
+                                    <a href="./categories-grid.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias</a>
                                     <ul class="mega-menu dropdown-menu" role="menu">
                                     <?php 
 
