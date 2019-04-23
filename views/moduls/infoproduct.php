@@ -114,7 +114,7 @@
                                     <div class="media">
                                         <i class="pull-left fa fa-eye"></i>
                                         <div class="media-body">
-                                            <strong>Vistas:</strong><br>Visto por <b>'.$infoproducto["vistas"].'</b> personas.</div>
+                                            <strong>Vistas:</strong><br>Visto por <b><span class="vistas">'.$infoproducto["vistas"].'</span></b> personas.</div>
                                     </div>
                                 </div>
                                 </div>
@@ -234,145 +234,88 @@
                             <div class="clearfix space40"></div>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
-                                    <h5 class="heading space40"><span>Upsell Products</span></h5>
-                                    <div class="product-carousel3">
-                                        <div class="pc-wrap">
-                                            <div class="product-item">
-                                                <div class="item-thumb">
-                                                    <span class="badge new">New</span>
-                                                    <img src="<?php echo $server; ?>views/images/products/fashion/5.jpg" class="img-responsive" alt=""/>
-                                                    <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-                                                    <div class="product-overlay">
-                                                        <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                                        <a href="#" class="compare fa fa-signal"></a>
-                                                        <a href="#" class="likeitem fa fa-heart-o"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="product-title"><a href="./single-product.html">Product fashion</a></h4>
-                                                    <span class="product-price">$99.00 <em>- Pre order</em></span>
-                                                    <div class="item-colors">
-                                                        <a href="#" class="brown"></a>
-                                                        <a href="#" class="white"></a>
-                                                        <a href="#" class="litebrown"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pc-wrap">
-                                            <div class="product-item">
-                                                <div class="item-thumb">
-                                                    <img src="<?php echo $server; ?>views/images/products/fashion/15.jpg" class="img-responsive" alt=""/>
-                                                    <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-                                                    <div class="product-overlay">
-                                                        <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                                        <a href="#" class="compare fa fa-signal"></a>
-                                                        <a href="#" class="likeitem fa fa-heart-o"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="product-title"><a href="./single-product.html">Product fashion</a></h4>
-                                                    <span class="product-price">$99.00 <em>- Pre order</em></span>
-                                                    <div class="item-colors">
-                                                        <a href="#" class="red"></a>
-                                                        <a href="#" class="darkgrey"></a>
-                                                        <a href="#" class="litebrown"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pc-wrap">
-                                            <div class="product-item">
-                                                <div class="item-thumb">
-                                                    <span class="badge offer">-50%</span>
-                                                    <img src="<?php echo $server; ?>views/images/products/accessories/8.jpg" class="img-responsive" alt=""/>
-                                                    <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-                                                    <div class="product-overlay">
-                                                        <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                                        <a href="#" class="compare fa fa-signal"></a>
-                                                        <a href="#" class="likeitem fa fa-heart-o"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="product-title"><a href="./single-product.html">Product accessories</a></h4>
-                                                    <span class="product-price"><small class="cutprice">$ 200.00</small> $99.00 <em>- Pre order</em></span>
-                                                    <div class="item-colors">
-                                                        <a href="#" class="black"></a>
-                                                        <a href="#" class="darkgrey"></a>
-                                                        <a href="#" class="red"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pc-wrap">
-                                            <div class="product-item">
-                                                <div class="item-thumb">
-                                                    <img src="<?php echo $server; ?>views/images/products/fashion/18.jpg" class="img-responsive" alt=""/>
-                                                    <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-                                                    <div class="product-overlay">
-                                                        <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                                        <a href="#" class="compare fa fa-signal"></a>
-                                                        <a href="#" class="likeitem fa fa-heart-o"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="product-title"><a href="./single-product.html">Product fashion</a></h4>
-                                                    <span class="product-price">$99.00 <em>- Pre order</em></span>
-                                                    <div class="item-colors">
-                                                        <a href="#" class="black"></a>
-                                                        <a href="#" class="liteblue"></a>
-                                                        <a href="#" class="litebrown"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pc-wrap">
-                                            <div class="product-item">
-                                                <div class="item-thumb">
-                                                    <img src="<?php echo $server; ?>views/images/products/fashion/10.jpg" class="img-responsive" alt=""/>
-                                                    <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-                                                    <div class="product-overlay">
-                                                        <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                                        <a href="#" class="compare fa fa-signal"></a>
-                                                        <a href="#" class="likeitem fa fa-heart-o"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="product-title"><a href="./single-product.html">Product fashion</a></h4>
-                                                    <span class="product-price">$99.00 <em>- Pre order</em></span>
-                                                    <div class="item-colors">
-                                                        <a href="#" class="black"></a>
-                                                        <a href="#" class="darkgrey"></a>
-                                                        <a href="#" class="litebrown"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pc-wrap">
-                                            <div class="product-item">
-                                                <div class="item-thumb">
-                                                    <img src="<?php echo $server; ?>views/images/products/accessories/5.jpg" class="img-responsive" alt=""/>
-                                                    <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-                                                    <div class="product-overlay">
-                                                        <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                                        <a href="#" class="compare fa fa-signal"></a>
-                                                        <a href="#" class="likeitem fa fa-heart-o"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="product-title"><a href="./single-product.html">Product fashion</a></h4>
-                                                    <span class="product-price">$99.00 <em>- Pre order</em></span>
-                                                    <div class="item-colors">
-                                                        <a href="#" class="brown"></a>
-                                                        <a href="#" class="white"></a>
-                                                        <a href="#" class="litebrown"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <?php 
+                                $item = "id_category";
+                                $value = $infoproducto["id_category"];
+                                $rutaArticulosDestacados = ControllerProducts::ctrMostrarCategorias($item,$value); 
+
+                            
+                                    echo '<h5 class="heading space40"><span>Articulos relacionados</span></h5>
+                                    
+                                
+                <a href="'.$url.$rutaArticulosDestacados["rute"].'" class="tp-caption lft skewtoleftshort rs-parallaxlevel-9"
+        
+        style="z-index: 3; max-height:100%;line-height:43px;color:#fff;font-family: Montserrat;
+        font-size: 12px;
+        display:table;
+        
+        margin-left:15px;
+        font-weight: bold;
+        text-transform:uppercase;padding:0 40px;background:#000000;position:relative;z-index:77;">
+         Ver Más >
+     </a>  
+     <br>';
+    
+     $ordenar = "";
+     $item = "id_category";
+     $value =$infoproducto["id_category"];
+     $base = 0;
+     $tope = 4;
+     $modo = "Rand()";
+
+     $relacionados = ControllerProducts::ctrMostrarProductos($ordenar,$item,$value,$base,$tope,$modo);
+
+     if(!$relacionados){
+         echo "<div class='col-xs-12 notfound-404'>
+         <h1> <small> Oops!</small></h1>
+         <h4>No hay productos relacionados para este producto</h4>
+         </div>";
+     }else{
+        foreach($relacionados as $key => $value){
+            echo '<div class="col-md-3 col-sm-4 clear-box">
+                <div class="product-item">
+                    <div class="item-thumb">';
+                    
+                    if($value["nuevo"] != 0){
+                        echo' <span class="badge new" style="font-size: 11.5px">Nuevo</span>';
+                     }
+                     if($value["oferta"] != 0){
+                         echo '<span class="badge offer">-'.$value["descuentoOferta"].'%</span>';
+                     }
+                
+                        echo '<img src="'.$server.$value["portada"].'" class="img-responsive" alt=""/>
+                        <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
+                        <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
+                        <div class="product-overlay">
+                            <a href="#" class="addcart fa fa-shopping-cart"></a>
+                            <a href="#" class="compare fa fa-signal"></a>
+                            <a href="#" id_product="'.$value["id_product"].'" class="likeitem fa fa-heart-o"></a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-title"><a href="'.$value["ruta"].'">'.$value["titulo"].'</a></h4>';
+                        if($value["oferta"] != 0){
+                            echo '<span class="product-price" style="font-weight:bold;"><small class="cutprice" style="font-weight:normal;">$'.$value["precio"].' MXN </small> $'.$value["precioOferta"].' MXN</span>';
+                        
+                    }
+                    else{
+                        echo '<span class="product-price" style="font-weight:bold;">$'.$value["precio"].' MXN</span>';
+                    }
+                        echo '<div class="item-colors">  
+                        </div>
+                    </div>
+                </div>
+            </div>';
+        }
+        echo '
+            </div>
+            </div>
+            <div class="space10 clearfix"></div>
+        </div>
+';
+     }
+
+?>
                             <div class="clearfix space20"></div>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
@@ -404,4 +347,27 @@ var pagActiva = $(".pagActiva").html();
         $(".pagActiva").html(regPagActiva);
     }
     
+
+
+    //CONTADOR DE VISTAS
+    var contador = 0;
+    $(window).on("load",function(){
+        var vistas = $("span.vistas").html();
+        
+
+        contador = Number(vistas)+1;
+       $("span.vistas").html(contador);
+       var item = "vistas";
+       var urlActual = location.pathname;
+       var ruta = urlActual.split("/");
+       
+       var datos = new FormData();
+        
+       datos.append("valor",contador);
+       datos.append("item",item)    ;
+
+       $.ajax({
+        url:"ajax/producto.ajax.php";
+       });
+    });
 </script>
