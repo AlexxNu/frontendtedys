@@ -43,6 +43,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/plugin/owl-carousel/owl.carousel.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/plugin/owl-carousel/owl.theme.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/style.css">
+        <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/sweetalert2.min.css">
         <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
 
@@ -80,6 +81,7 @@
         <script src="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.min.js"></script>
         <script src="<?php echo $url;?>views/js/main.js"></script>
         <script src="<?php echo $url;?>views/js/buscador.js"></script>
+        <script src="<?php echo $url;?>views/js/plugins/sweetalert2.min.js"></script>
         
     </head>
     <body id="home4">

@@ -244,7 +244,7 @@ echo '<li>
 			REGISTRO DIRECTO
 			======================================-->
 
-			<form method="post" onsubmit="return registroUsuario()">
+			<form method="post">
 				
                 <hr>
     
@@ -295,9 +295,28 @@ echo '<li>
                         </div>
     
                     </div>
+                    <div class="checkBox">
+                        <label>
+                            <input id="regPoliticas" type="checkbox">
+                            <small>
+                                Al registrarse, usted acepta nuestras condiciones de uso y politicas de privacidad. <br>
+                               
+                                <a href="https://www.iubenda.com/privacy-policy/78573943" class="iubenda-white iubenda-embed" title="Privacy Policy">Leer Mas</a>
+                                <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+
+                         
+                            </small>
+                        </label>
+                    </div>
+                    <?php 
+                        $registro = new ControladorUsuarios();
+                        $registro->ctrRegistroUsuario();
+                    ?>
+                    <input type="submit" class="btn btn-default modal-header btn-block button-enviar" value="ENVIAR">
+                    </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        Ya tienes una cuenta registrada? | <strong><a href="#modalIngreso" data-dismiss="modal" data-toggle="modal"> Ingresar</a></strong>
       </div>
     
 
@@ -341,3 +360,67 @@ $("#buscador input").focus(function() {
 });
 
 </script>
+
+<!-- CONTROL DE REGISTRO DE USUARIOS-->
+<script>
+function registroUsuario(){
+       //validar el nombre
+    var nombre = $("#regUsuario").val();
+    if(nombre != ""){
+        var expresion = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
+        if(!expresion.test(nombre)){
+            $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten numeros ni caracteres especiales.</div>');
+            return false;
+        }
+        
+    }else{
+        $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
+        return false;
+
+    }
+        //validar el email
+        var email = $("#regEmail").val();
+    if(email != ""){
+        var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        if(!expresion.test(email)){
+            $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Escriba correctamente el correo electronico.</div>');
+            return false;
+        }
+        
+    }else{
+        $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
+        return false;
+
+    }
+
+    //Validar contraseña
+    var password = $("#regPassword").val();
+
+	if(password != ""){
+
+		var expresion = /^[a-zA-Z0-9]*$/;
+
+		if(!expresion.test(password)){
+
+			$("#regPassword").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten caracteres especiales</div>')
+
+			return false;
+
+		}
+
+	}else{
+
+		$("#regPassword").parent().before('<div class="alert alert-warning"><strong>ATENCIÓN:</strong> Este campo es obligatorio</div>')
+
+		return false;
+	}
+
+       //validar terminos o politicas de privacidad
+   var politicas =$("#regPoliticas:checked").val();
+    if(politicas != "on"){
+        $("#regPoliticas").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Debe aceptar nuestras condiciones de uso y politicas de privacidad</div>');
+        return false;
+    }
+    return true;
+}
+</script> 
