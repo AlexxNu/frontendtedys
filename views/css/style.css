@@ -5304,3 +5304,77 @@ label.css-label {
     color: #ffcc01;
     font-weight: bold;
 }
+
+.modal-content {
+    padding: 0;
+}
+
+.modal-header {
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #ffcc01;
+}
+
+.modal-header .close {
+    margin-top: 2px
+}
+
+.modal-header h3 {
+    text-align: center;
+    color: #FFF;
+    margin: 0;
+    line-height: 30px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.modalFormulario .facebook,
+.modalFormulario .google {
+    cursor: pointer;
+}
+
+.modalFormulario .facebook p {
+    background: #46639f;
+}
+
+.modalFormulario .google p {
+    background: #d6513e;
+}
+
+.modalFormulario .facebook p,
+.modalFormulario .google p {
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    padding: 8px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.modalFormulario p i {
+    margin-left: -15px;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.modalFormulario form {
+    padding: 20px;
+}
+
+.modalFormulario form hr {
+    border: 1px solid #eee;
+}
+
+.modalFormulario form input[type="text"],
+.modalFormulario form input[type="email"],
+.modalFormulario form input[type="password"] {
+    padding: 25px;
+}
+
+.modalFormulario form input[type="submit"] {
+    padding: 15px;
+}
+
+.modalFormulario form .checkBox {
+    margin-top: 10px;
+}

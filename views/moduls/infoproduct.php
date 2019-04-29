@@ -347,27 +347,5 @@ var pagActiva = $(".pagActiva").html();
         $(".pagActiva").html(regPagActiva);
     }
     
-
-
-    //CONTADOR DE VISTAS
-    var contador = 0;
-    $(window).on("load",function(){
-        var vistas = $("span.vistas").html();
-        
-
-        contador = Number(vistas)+1;
-       $("span.vistas").html(contador);
-       var item = "vistas";
-       var urlActual = location.pathname;
-       var ruta = urlActual.split("/");
-       
-       var datos = new FormData();
-        
-       datos.append("valor",contador);
-       datos.append("item",item)    ;
-
-       $.ajax({
-        url:"ajax/producto.ajax.php";
-       });
-    });
+   
 </script>

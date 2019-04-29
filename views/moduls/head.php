@@ -23,35 +23,13 @@ $server = Route::ctrRouteServer();
                             <ul>
                                 <li>
                                     <div class="tbr-info">
-                                        <span>Account <i class="fa fa-caret-down"></i></span>
-                                        <div class="tbr-inner">
-                                            <a href="my-account.html">My Account</a>
-                                            <a href="#">My Wishlist</a>
-                                            <a href="#">Checkout</a>
-                                            <a href="#">Login</a>
-                                        </div>
+                                        
+                                            <a href="#" data-toggle="modal">Ingresar</a> |
+                                            <a href="#modalRegistro" data-toggle="modal">Registrarse</a>
+                                       
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="tbr-info">
-                                        <span><img src="images/basic/flag1.png" alt=""/>&nbsp;English <i class="fa fa-caret-down"></i></span>
-                                        <div class="tbr-inner">
-                                            <a href="#"><img src="images/basic/flag1.png" alt=""/>English</a>
-                                            <a href="#"><img src="images/basic/flag2.png" alt=""/>French</a>
-                                            <a href="#"><img src="images/basic/flag3.png" alt=""/>German</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="tbr-info">
-                                        <span>US Dollar <i class="fa fa-caret-down"></i></span>
-                                        <div class="tbr-inner">
-                                            <a href="#">&euro; Euro</a>
-                                            <a href="#">&pound; Pound</a>
-                                            <a href="#">&yen; Yen</a>
-                                        </div>
-                                    </div>
-                                </li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -237,7 +215,94 @@ echo '<li>
         </div>
     </header>
 
+<!-- MODAL PARA INGRESO Y REGISTRO-->
+<div id="modalRegistro" class="modal fade modalFormulario" role="dialog">
+  <div class="modal-content modal-dialog">
 
+    <!-- Modal content-->
+   
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">REGISTRARSE</h3>
+      </div>
+      <div class="modal-body ">
+        <!-- REGISTRO FACEBOOK-->
+        <div class="col-sm-6 col-xs-12 facebook " id="btnFacebookRegistro">
+        <p>
+				  <i class="fa fa-facebook"></i>
+					Registro con Facebook
+				</p>
+        </div>
+        <!-- REGISTRO GOOGLE-->
+        <div class="col-sm-6 col-xs-12 google " id="btnGoogleRegistro">
+        <p>
+					  <i class="fa fa-google"></i>
+						Registro con Google
+					</p>
+        </div>
+        <!--=====================================
+			REGISTRO DIRECTO
+			======================================-->
+
+			<form method="post" onsubmit="return registroUsuario()">
+				
+                <hr>
+    
+                    <div class="form-group">
+                        
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">
+                                
+                                <i class="glyphicon glyphicon-user"></i>
+                            
+                            </span>
+    
+                            <input type="text" class="form-control text-uppercase" id="regUsuario" name="regUsuario" placeholder="Nombre Completo" required>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="form-group">
+                        
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">
+                                
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            
+                            </span>
+    
+                            <input type="email" class="form-control" id="regEmail" name="regEmail" placeholder="Correo Electrónico" required>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="form-group">
+                        
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">
+                                
+                                <i class="glyphicon glyphicon-lock"></i>
+                            
+                            </span>
+    
+                            <input type="password" class="form-control" id="regPassword" name="regPassword" placeholder="Contraseña" required>
+    
+                        </div>
+    
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    
+
+  </div>
+</div>
 
 <!-- SCRIPT PARA EL BUSCADOR-->
 <script>

@@ -592,4 +592,8 @@ $(window).load(function() {
         return false;
     });
 
+    $(window).load(function() {
+        var rutaOculta = $("#rutaOculta").val();
+        console.log(rutaOculta);
+    });
 });

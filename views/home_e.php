@@ -80,9 +80,11 @@
         <script src="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.min.js"></script>
         <script src="<?php echo $url;?>views/js/main.js"></script>
         <script src="<?php echo $url;?>views/js/buscador.js"></script>
-
+        
     </head>
     <body id="home4">
+
+    <input type="hidden" value="<?php echo $url;?>" id="rutaOculta">
 
         <?php 
             include "moduls/head.php";
@@ -133,3 +135,4 @@
         ?>
     </body>
 </html>
+

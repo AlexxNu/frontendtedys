@@ -1,3 +1,2 @@
-$(document).ready(function () {
-  alert("hola");
- });
+var rutaOculta = $("#rutaOculta").val();
+console.log(rutaOculta);
