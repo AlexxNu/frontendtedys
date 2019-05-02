@@ -23,9 +23,41 @@ $server = Route::ctrRouteServer();
                             <ul>
                                 <li>
                                     <div class="tbr-info">
+
+                                    <?php 
+                                    if(isset($_SESSION["validarSesion"])){
+                                        if($_SESSION["validarSesion"] == "ok"){
+                                            if($_SESSION["modo"] == "directo"){
+                                                if($_SESSION["foto"] != ""){
+                                                    echo '<li>
+										            <img class="img-circle" src="'.$url.$_SESSION["foto"].'" width="10%">
+									                </li>';
+                                                }else{
+                                                    echo '
+									                <img class="img-circle" src="'.$server.'views/images/usuarios/default/anonymous.png" width="10%">
+								                    ';
+                                                }
+                                                echo '<a href="'.$url.'perfil">Ver Perfil</a> |
+							                          <a href="'.$url.'salir">Salir</a>';
+                                                
+                                            }
+                                            if($_SESSION["modo"] == "facebook"){
+                                                echo '
+									                <img class="img-circle" src="'.$_SESSION["foto"].'" width="10%">
+                                                    <a href="'.$url.'perfil">Ver Perfil</a> |
+							                          <a href="'.$url.'salir" class="salir">Salir</a>';
+                                            }
+                                            
+                                        }
+                                    }else{
+
+                                        echo '<a href="#modalIngreso" data-toggle="modal">Ingresar</a> |
+                                        <a href="#modalRegistro" data-toggle="modal">Registrarse</a>';
+                    
+                                    }
+                                    ?>
                                         
-                                            <a href="#" data-toggle="modal">Ingresar</a> |
-                                            <a href="#modalRegistro" data-toggle="modal">Registrarse</a>
+                                            
                                        
                                     </div>
                                 </li>
@@ -227,7 +259,7 @@ echo '<li>
       </div>
       <div class="modal-body ">
         <!-- REGISTRO FACEBOOK-->
-        <div class="col-sm-6 col-xs-12 facebook " id="btnFacebookRegistro">
+        <div class="col-sm-6 col-xs-12 facebook">
         <p>
 				  <i class="fa fa-facebook"></i>
 					Registro con Facebook
@@ -244,7 +276,7 @@ echo '<li>
 			REGISTRO DIRECTO
 			======================================-->
 
-			<form method="post">
+			<form method="post" onsubmit="return registroUsuario()">
 				
                 <hr>
     
@@ -320,9 +352,148 @@ echo '<li>
       </div>
     
 
-  </div>
+  </div> 
 </div>
 
+<!-- MODAL PARA INGRESO -->
+<div id="modalIngreso" class="modal fade modalFormulario" role="dialog">
+  <div class="modal-content modal-dialog">
+
+    <!-- Modal content-->
+   
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">INGRESAR</h3>
+      </div>
+      <div class="modal-body ">
+        <!-- REGISTRO FACEBOOK-->
+        <div class="col-sm-6 col-xs-12 facebook ">
+        <p>
+				  <i class="fa fa-facebook"></i>
+					Ingreso con Facebook
+				</p>
+        </div>
+        <!-- REGISTRO GOOGLE-->
+        <div class="col-sm-6 col-xs-12 google " id="btnGoogleRegistro">
+        <p>
+					  <i class="fa fa-google"></i>
+						Ingreso con Google
+					</p>
+        </div>
+        <!--=====================================
+			INGRESO DIRECTO
+			======================================-->
+
+			<form method="post">
+				
+                <hr>
+    
+    
+                    <div class="form-group">
+                        
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">
+                                
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            
+                            </span>
+    
+                            <input type="email" class="form-control" id="ingEmail" name="ingEmail" placeholder="Correo Electrónico" required>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="form-group">
+                        
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">
+                                
+                                <i class="glyphicon glyphicon-lock"></i>
+                            
+                            </span>
+    
+                            <input type="password" class="form-control" id="ingPassword" name="ingPassword" placeholder="Contraseña" required>
+    
+                        </div>
+    
+                    </div>
+                   
+                    <?php 
+                        $ingreso = new ControladorUsuarios();
+                        $ingreso->ctrIngresoUsuario();
+                    ?>
+                    <input type="submit" class="btn btn-default modal-header btn-block button-enviar btnIngreso" value="ENVIAR">
+                    <br>
+                    
+                    <a href="#modalPassword" data-dismiss="modal" data-toggle="modal">Olvidaste tu contraseña?</a>
+                    
+
+                    </form>
+      </div>
+      <div class="modal-footer">
+        No tienes una cuenta registrada? | <strong><a href="#modalRegistro" data-dismiss="modal" data-toggle="modal"> Registrarse</a></strong>
+      </div>
+    
+
+  </div> 
+</div>
+
+<!-- VENTANA MODAL PARA OLVIDO DE CONTRASEÑA -->
+
+<div id="modalPassword" class="modal fade modalFormulario" role="dialog">
+  <div class="modal-content modal-dialog">
+
+    <!-- Modal content-->
+   
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">SOLICITUD  DE NUEVA CONTRASEÑA</h3>
+
+      </div>
+              <!-- OLVIDO CONTRASEÑA-->
+      <div class="modal-body ">
+
+        <!--=====================================
+			INGRESO DIRECTO
+			======================================-->
+
+			<form method="post">
+				
+                    <div class="form-group">
+                        
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">
+                                
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            
+                            </span>
+                            
+                            <input type="email" class="form-control" id="passEmail" name="passEmail" placeholder="Correo Electrónico" required>
+    
+                        </div>
+    
+                    </div>
+    
+                    
+                    <?php 
+                        $passowrd = new ControladorUsuarios();
+                        $passowrd->ctrOlvidoPassword();
+                    ?>
+                    <input type="submit" class="btn btn-default modal-header btn-block button-enviar " value="ENVIAR">
+                    
+                    </form>
+      </div>
+      <div class="modal-footer">
+        No tienes una cuenta registrada? | <strong><a href="#modalRegistro" data-dismiss="modal" data-toggle="modal"> Registrarse</a></strong>
+      </div>
+    
+
+  </div> 
+</div>
 <!-- SCRIPT PARA EL BUSCADOR-->
 <script>
 $("#buscador a").click(function(){
@@ -361,66 +532,3 @@ $("#buscador input").focus(function() {
 
 </script>
 
-<!-- CONTROL DE REGISTRO DE USUARIOS-->
-<script>
-function registroUsuario(){
-       //validar el nombre
-    var nombre = $("#regUsuario").val();
-    if(nombre != ""){
-        var expresion = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
-        if(!expresion.test(nombre)){
-            $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten numeros ni caracteres especiales.</div>');
-            return false;
-        }
-        
-    }else{
-        $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
-        return false;
-
-    }
-        //validar el email
-        var email = $("#regEmail").val();
-    if(email != ""){
-        var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-        if(!expresion.test(email)){
-            $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Escriba correctamente el correo electronico.</div>');
-            return false;
-        }
-        
-    }else{
-        $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
-        return false;
-
-    }
-
-    //Validar contraseña
-    var password = $("#regPassword").val();
-
-	if(password != ""){
-
-		var expresion = /^[a-zA-Z0-9]*$/;
-
-		if(!expresion.test(password)){
-
-			$("#regPassword").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten caracteres especiales</div>')
-
-			return false;
-
-		}
-
-	}else{
-
-		$("#regPassword").parent().before('<div class="alert alert-warning"><strong>ATENCIÓN:</strong> Este campo es obligatorio</div>')
-
-		return false;
-	}
-
-       //validar terminos o politicas de privacidad
-   var politicas =$("#regPoliticas:checked").val();
-    if(politicas != "on"){
-        $("#regPoliticas").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Debe aceptar nuestras condiciones de uso y politicas de privacidad</div>');
-        return false;
-    }
-    return true;
-}
-</script> 
