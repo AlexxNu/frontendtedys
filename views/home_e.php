@@ -124,8 +124,8 @@
                 else if($infoProduct != null){
                     include "moduls/infoproduct.php";
                 }
-                else if($routes[0] == "buscador"){
-                    include "moduls/buscador.php";
+                else if($routes[0] == "buscador" || $routes[0] == "verificar"){
+                    include "moduls/".$routes[0].".php";
                 }
                 else{
                     include "moduls/error404.php";
