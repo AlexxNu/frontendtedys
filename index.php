@@ -12,6 +12,7 @@ require_once "models/usuarios.model.php";
 require_once "models/routes.php";
 
 require_once "extensiones/PHPMailer/PHPMailerAutoload.php";
+require_once "extensiones/vendor/autoload.php";
 
 
 $template= new controllerTemplate();

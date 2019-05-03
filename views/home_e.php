@@ -125,7 +125,7 @@
                 else if($infoProduct != null){
                     include "moduls/infoproduct.php";
                 }
-                else if($routes[0] == "buscador" || $routes[0] == "verificar" || $routes[0] == "salir"){
+                else if($routes[0] == "buscador" || $routes[0] == "verificar" || $routes[0] == "salir" || $routes[0] == "perfil"){
                     include "moduls/".$routes[0].".php";
                 }
                 else{

@@ -519,11 +519,164 @@ class ControladorUsuarios{
 				echo "ok";
 
 			}
-			else{
+			else if($respuesta2["modo"] == "google"){
+
+				$_SESSION["validarSesion"] = "ok";
+				$_SESSION["id"] = $respuesta2["id"];
+				$_SESSION["nombre"] = $respuesta2["nombre"];
+				$_SESSION["foto"] = $respuesta2["foto"];
+				$_SESSION["email"] = $respuesta2["email"];
+				$_SESSION["password"] = $respuesta2["password"];
+				$_SESSION["modo"] = $respuesta2["modo"];
+
+				echo "<span style='color:white;'>ok</span>";
+
+			}else{
 
 				echo "";
 			}
 
 		}
+	}
+	/*=============================================
+	ACTUALIZAR PERFIL
+	=============================================*/
+
+	public function ctrActualizarPerfil(){
+
+		if(isset($_POST["editarNombre"])){
+
+			/*=============================================
+			VALIDAR IMAGEN
+			=============================================*/
+
+			$ruta = "";
+
+			if(isset($_FILES["datosImagen"]["tmp_name"]) && !empty($_FILES["datosImagen"]["tmp_name"])){
+
+				/*=============================================
+				PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+				=============================================*/
+
+				$directorio = "views/images/usuarios/".$_POST["idUsuario"];
+
+				if(!empty($_POST["fotoUsuario"])){
+
+					unlink($_POST["fotoUsuario"]);
+				
+				}else{
+
+					mkdir($directorio, 0755);
+
+				}
+
+				/*=============================================
+				GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+				=============================================*/
+
+				list($ancho, $alto) = getimagesize($_FILES["datosImagen"]["tmp_name"]);
+
+				$nuevoAncho = 500;
+				$nuevoAlto = 500;
+
+				$aleatorio = mt_rand(100, 999);
+
+				if($_FILES["datosImagen"]["type"] == "image/jpeg"){
+
+					$ruta = "views/images/usuarios/".$_POST["idUsuario"]."/".$aleatorio.".jpg";
+
+					/*=============================================
+					MOFICAMOS TAMAÑO DE LA FOTO
+					=============================================*/
+
+
+					$origen = imagecreatefromjpeg($_FILES["datosImagen"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagejpeg($destino, $ruta);
+
+				}
+
+				if($_FILES["datosImagen"]["type"] == "image/png"){
+
+					$ruta = "views/images/usuarios/".$_POST["idUsuario"]."/".$aleatorio.".png";
+
+					/*=============================================
+					MOFICAMOS TAMAÑO DE LA FOTO
+					=============================================*/
+
+					$origen = imagecreatefrompng($_FILES["datosImagen"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagealphablending($destino, FALSE);
+    			
+					imagesavealpha($destino, TRUE);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagepng($destino, $ruta);
+
+				}
+
+			}
+
+			if($_POST["editarPassword"] == ""){
+
+				$password = $_POST["passUsuario"];
+
+			}else{
+
+				$password = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+			}
+
+			$datos = array("nombre" => $_POST["editarNombre"],
+						   "email" => $_POST["editarEmail"],
+						   "password" => $password,
+						   "foto" => $ruta,
+						   "id" => $_POST["idUsuario"]);
+
+			$tabla = "usuarios";
+
+			$respuesta = ModeloUsuarios::mdlActualizarPerfil($tabla, $datos);
+
+			if($respuesta == "ok"){
+
+				$_SESSION["validarSesion"] = "ok";
+				$_SESSION["id"] = $datos["id"];
+				$_SESSION["nombre"] = $datos["nombre"];
+				$_SESSION["foto"] = $datos["foto"];
+				$_SESSION["email"] = $datos["email"];
+				$_SESSION["password"] = $datos["password"];
+				$_SESSION["modo"] = $_POST["modoUsuario"];
+
+				echo '<script> 
+
+						swal({
+							  title: "¡OK!",
+							  text: "¡Su cuenta ha sido actualizada correctamente!",
+							  type:"success",
+							  confirmButtonText: "Cerrar",
+							  closeOnConfirm: false
+							},
+
+							function(isConfirm){
+
+								if(isConfirm){
+									history.back();
+								}
+						});
+
+				</script>';
+
+
+			}
+
+		}
+
 	}
 }

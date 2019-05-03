@@ -125,7 +125,7 @@ function testApi(){
 
 			           		 	 	FB.logout(function(response){
 
-			           		 	 		deleteCookie("fblo_307504983059062");
+			           		 	 		deleteCookie("fblo_650275259131900");
 
 			           		 	 		setTimeout(function(){
 
@@ -174,7 +174,7 @@ $(".salir").click(function(e){
 	 	 
 	 	 	FB.logout(function(response){
 
-	 	 		deleteCookie("fblo_307504983059062");
+	 	 		deleteCookie("fblo_650275259131900");
 
 	 	 		console.log("salir");
 
