@@ -120,7 +120,7 @@ echo '<div class="featured-products featured-products2">
                             <div class="product-overlay">
                                 <a href="#" class="addcart fa fa-shopping-cart"></a>
                                 <a href="#" class="compare fa fa-signal"></a>
-                                <a href="#" id_product="'.$value["id_product"].'" class="likeitem fa fa-heart-o"></a>
+                                <a href="#" idProducto="'.$value["id_product"].'" class="likeitem fa fa-heart-o deseos"></a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -253,7 +253,7 @@ echo '<div class="featured-products featured-products2">
                                 <div class="space20"></div>
                                 <div class="share">
                                     <span>
-                                        <a href="#" class="fa fa-heart-o" onclick="return false;"></a>
+                                        <a href="#" class="fa fa-heart-o deseos" onclick="return false;"></a>
                                         <a href="#" class="fa fa-signal" onclick="return false;"></a>
                                         <a href="#" class="fa fa-envelope-o" onclick="return false;"></a>
                                     </span>

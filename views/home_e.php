@@ -44,6 +44,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/plugin/owl-carousel/owl.theme.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/style.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/sweetalert2.min.css">
+        <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/perfil.css">
         <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
 

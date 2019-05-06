@@ -2,6 +2,27 @@
 $url = Route::ctrRoute();
 $server = Route::ctrRouteServer();
 
+/*=============================================
+INICIO DE SESIÓN USUARIO
+=============================================*/
+
+if(isset($_SESSION["validarSesion"])){
+
+	if($_SESSION["validarSesion"] == "ok"){
+
+		echo '<script>
+		
+			localStorage.setItem("usuario","'.$_SESSION["id"].'");
+
+		</script>';
+
+	}
+
+}
+
+/*=============================================
+API DE GOOGLE
+=============================================*/
 
 /*=============================================
 CREAR EL OBJETO DE LA API GOOGLE
@@ -89,13 +110,14 @@ if($cliente->getAccessToken()){
                                     <div class="tbr-info">
 
                                     <?php 
+                                    
                                     if(isset($_SESSION["validarSesion"])){
                                         if($_SESSION["validarSesion"] == "ok"){
                                             if($_SESSION["modo"] == "directo"){
                                                 if($_SESSION["foto"] != ""){
-                                                    echo '<li>
+                                                    echo '
 										            <img class="img-circle" src="'.$url.$_SESSION["foto"].'" width="10%">
-									                </li>';
+									                ';
                                                 }else{
                                                     echo '
 									                <img class="img-circle" src="'.$server.'views/images/usuarios/default/anonymous.png" width="10%">

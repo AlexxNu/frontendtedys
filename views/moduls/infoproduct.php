@@ -154,83 +154,329 @@
                                 </div>
                             </div>
                             <div class="clearfix space40"></div>
-                            <div role="tabpanel">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripcion del producto</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Opiniones de los clientes</a></li>
-                                </ul>
-                                <!-- Tab panes -->
+                            <!--=====================================
+		COMENTARIOS
+		======================================-->
 
-                               
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="home">
-                                    <?php 
-                                $detalles = json_decode($infoproducto["detalles"],true);
+		<br>
 
-                                echo '<div class="space10"></div>
-                                <p>'.$infoproducto["descripcion"].'</p>
-                                <div class="space20"></div>
-                                <ul class="dot">';
-                                if($detalles["Tamano"] != null){
-                                           echo'<li>Tamaño: '.$detalles["Tamano"].'</li>';
-                                        }
-                                if($detalles["Color"] != null){
-                                            echo'<li>Color: '.$detalles["Color"].'</li>';
-                                        }
-                                       echo' </ul>
-                                <div class="space20"></div>';
-                                ?>
-                                        
-                                        
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="profile">
-                                        <div class="reviews-tab">
-                                            <p><b>Smile Nguyen</b>, 23 July 2014</p>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                            <div class="ratings">
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                            </div>
-                                            <div class="sep"></div>
-                                            <p><b>Smile Nguyen</b>, 23 July 2014</p>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                            <div class="ratings">
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                                <span class="act fa fa-star"></span>
-                                            </div>
-                                            <div class="sep"></div>
-                                            <form>
-                                                <h5>Write a Review</h5>
-                                                <label>Your Name *</label>
-                                                <input type="text">
-                                                <div class="space20"></div>
-                                                <label>Your Review *</label>
-                                                <textarea></textarea>
-                                                <br>
-                                                <div class="clearfix space20"></div>
-                                                <span class="pull-left">Rating*&nbsp;&nbsp;</span>
-                                                <div class="ratings">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <div class="clearfix space20"></div>
-                                                <button type="submit" class="btn-black">Submit</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                            </div>
+<div class="row">
+
+    <?php
+
+    $datos = array("idUsuario"=>"",
+                   "idProducto"=>$infoproducto["id_product"]);
+
+    $comentarios = ControladorUsuarios::ctrMostrarComentariosPerfil($datos);
+    $cantidad = 0;
+
+    foreach ($comentarios as $key => $value){
+        
+        if($value["comentario"] != ""){
+
+            $cantidad ++;
+
+        }
+    }
+
+    ?>
+    
+    <ul class="nav nav-tabs">
+
+    <?php
+
+        $cantidadCalificacion = 0;
+
+        if($cantidad == 0){
+
+            echo '<li class="active"><a>ESTE PRODUCTO NO TIENE COMENTARIOS</a></li>
+                  <li></li>';
+
+        }else{
+
+            echo '<li class="active"><a>COMENTARIOS '.$cantidad.'</a></li>
+                  <li><a id="verMas" href="">Ver más</a></li>';
+
+
+            $sumaCalificacion = 0;
+
+            foreach ($comentarios as $key => $value) {
+                
+                if($value["calificacion"] != 0){
+
+                    $cantidadCalificacion ++;
+
+                    $sumaCalificacion += $value["calificacion"];
+                }
+            }
+
+            $promedio = round($sumaCalificacion/$cantidadCalificacion,1);
+
+            echo '<li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: '.$promedio.' | ';
+
+            if($promedio >= 0 && $promedio < 0.5){
+
+                echo '<i class="fa fa-star-half-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 0.5 && $promedio < 1){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 1 && $promedio < 1.5){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-half-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 1.5 && $promedio < 2){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 2 && $promedio < 2.5){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-half-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 2.5 && $promedio < 3){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 3 && $promedio < 3.5){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-half-o text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 3.5 && $promedio < 4){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-o text-success"></i>';
+
+            }
+
+            else if($promedio >= 4 && $promedio < 4.5){
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star-half-o text-success"></i>';
+
+            }else{
+
+                echo '<i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>
+                      <i class="fa fa-star text-success"></i>';
+
+            }
+
+
+        }
+
+
+    ?>
+
+            
+        </a></li>
+
+    </ul>
+
+    <br>
+
+</div>
+
+<div class="row comentarios">
+
+<?php
+
+foreach ($comentarios as $key => $value) {
+    
+    if($value["comentario"] != ""){
+
+        $item = "id";
+        $valor = $value["id_usuario"];
+
+        $usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+
+        echo '<div class="panel-group col-md-3 col-sm-6 col-xs-12 alturaComentarios">
+        
+            <div class="panel panel-default">
+              
+              <div class="panel-heading text-uppercase">
+
+                  '.$usuario["nombre"].'
+                  <span class="text-right">';
+
+                  if($usuario["modo"] == "directo"){
+
+                      if($usuario["foto"] == ""){
+
+                          echo '<img class="img-circle pull-right" src="'.$server.'views/images/usuarios/default/anonymous.png" width="20%">';	
+
+                      }else{
+
+                          echo '<img class="img-circle pull-right" src="'.$url.$usuario["foto"].'" width="20%">';	
+
+                      }
+                  
+                  }else{
+
+                      echo '<img class="img-circle pull-right" src="'.$usuario["foto"].'" width="20%">';	
+
+                  }
+
+                  echo '</span>
+
+              </div>
+             
+              <div class="panel-body"><small>'.$value["comentario"].'</small></div>
+
+              <div class="panel-footer">';
+                  
+                  switch($value["calificacion"]){
+
+                    case 0.5:
+                    echo '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 1.0:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 1.5:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 2.0:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 2.5:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 3.0:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 3.5:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 4.0:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 4.5:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>';
+                    break;
+
+                    case 5.0:
+                    echo '<i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>
+                          <i class="fa fa-star text-success" aria-hidden="true"></i>';
+                    break;
+
+                }
+
+              echo '</div>
+            
+            </div>
+
+        </div>';
+
+    }
+}
+
+?>
+
+</div>
+
+<hr>
+
+</div>
+
+</div>
                             <div class="clearfix space40"></div>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
@@ -289,7 +535,7 @@
                         <div class="product-overlay">
                             <a href="#" class="addcart fa fa-shopping-cart"></a>
                             <a href="#" class="compare fa fa-signal"></a>
-                            <a href="#" id_product="'.$value["id_product"].'" class="likeitem fa fa-heart-o"></a>
+                            <a href="#" idProducto="'.$value["id_product"].'" class="likeitem fa fa-heart-o deseos"></a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -316,22 +562,7 @@
      }
 
 ?>
-                            <div class="clearfix space20"></div>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="related-posts">
-                                        <h5>Recently Viewed</h5>
-                                        <ul>
-                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/1.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/2.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/3.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/4.jpg" class="img-responsive" alt=""/></a></li>
-                                            <li><a href="./single-product.html"><img src="<?php echo $server; ?>views/images/products/fashion/5.jpg" class="img-responsive" alt=""/></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                           
                     </div>
                 </div>
             </div>
@@ -346,6 +577,34 @@ var pagActiva = $(".pagActiva").html();
         var regPagActiva = pagActiva.replace(/-/g, " ");
         $(".pagActiva").html(regPagActiva);
     }
-    
+    /*=============================================
+ALTURA COMENTARIOS
+=============================================*/
+
+$(".comentarios").css({"height":$(".comentarios .alturaComentarios").height()+"px",
+						"overflow":"hidden",
+						"margin-bottom":"20px"})
+
+$("#verMas").click(function(e){
+
+	e.preventDefault();
+
+	if($("#verMas").html() == "Ver más"){
+
+		$(".comentarios").css({"overflow":"inherit"});
+
+		$("#verMas").html("Ver menos"); 
+	
+	}else{
+
+		$(".comentarios").css({"height":$(".comentarios .alturaComentarios").height()+"px",
+								"overflow":"hidden",
+								"margin-bottom":"20px"})
+
+		$("#verMas").html("Ver más"); 
+	}
+
+})
+
    
 </script>

@@ -178,7 +178,7 @@ echo '<div class="col-md-3 col-sm-4 clear-box">
             <div class="product-overlay">
                 <a href="#" class="addcart fa fa-shopping-cart"></a>
                 <a href="#" class="compare fa fa-signal"></a>
-                <a href="#" id_product="'.$value["id_product"].'" class="likeitem fa fa-heart-o"></a>
+                <a href="#" idProducto="'.$value["id_product"].'" class="likeitem fa fa-heart-o deseos"></a>
             </div>
         </div>
         <div class="product-info">
