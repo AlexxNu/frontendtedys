@@ -126,7 +126,7 @@
                 else if($infoProduct != null){
                     include "moduls/infoproduct.php";
                 }
-                else if($routes[0] == "buscador" || $routes[0] == "verificar" || $routes[0] == "salir" || $routes[0] == "perfil"){
+                else if($routes[0] == "buscador" || $routes[0] == "verificar" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "carrito-de-compras"){
                     include "moduls/".$routes[0].".php";
                 }
                 else{
@@ -139,6 +139,7 @@
         ?>
         <script src="<?php echo $url;?>views/js/ajax/usuarios.js"></script>
         <script src="<?php echo $url;?>views/js/ajax/registroFacebook.js"></script>
+        <script src="<?php echo $url;?>views/js/ajax/carrito-de-compras.js"></script>
         <script>
   window.fbAsyncInit = function() {
     FB.init({

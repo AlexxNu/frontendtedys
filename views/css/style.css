@@ -217,7 +217,7 @@ header {
 }
 
 .header-xtra span:hover {
-    background: #ffcc01;
+    
     color: #fff;
     transition: .4s;
 }
@@ -643,7 +643,7 @@ h5.heading2 span {
     transition: .4s;
 }
 
-.product-overlay a {
+.product-overlay button {
     width: 28px;
     height: 28px;
     background: #444444;
@@ -654,11 +654,13 @@ h5.heading2 span {
     color: #fff;
     display: block;
     margin-top: 5px;
+    border: 1px solid #444444;
 }
 
-.product-overlay a:hover {
+.product-overlay button:hover {
     background: #ffcc01;
     color: #fff;
+    border: 1px solid #ffcc01;
 }
 
 .filter {
@@ -3217,11 +3219,13 @@ footer {
     color: #fff;
     text-transform: uppercase;
     margin: 8px 0 0;
+    border: 1px solid #ffcc01;
 }
 
 .addtobag:hover {
     background: #333;
     color: #fff;
+    border: 1px solid #333;
 }
 
 .ps-slider div span {
@@ -4091,7 +4095,7 @@ button.close {
 }
 
 #header4 .header-xtra span:hover {
-    background: #ffcc01 !important;
+    
     color: #fff;
     transition: .4s;
 }

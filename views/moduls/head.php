@@ -174,37 +174,9 @@ if($cliente->getAccessToken()){
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="topcart pull-right">
-                        <span><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;My Bag - 0 item(s)</span>
-                        <div class="cart-info">
-                            <small>You have <em class="highlight">3 item(s)</em> in your shopping bag</small>
-                            <div class="ci-item">
-                                <img src="images/products/fashion/8.jpg" width="80" alt=""/>
-                                <div class="ci-item-info">
-                                    <h5><a href="./single-product.html">Product fashion</a></h5>
-                                    <p>2 x $250.00</p>
-                                    <div class="ci-edit">
-                                        <a href="#" class="edit fa fa-edit"></a>
-                                        <a href="#" class="edit fa fa-trash"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ci-item">
-                                <img src="images/products/fashion/15.jpg" width="80" alt=""/>
-                                <div class="ci-item-info">
-                                    <h5><a href="./single-product.html">Product fashion</a></h5>
-                                    <p>2 x $250.00</p>
-                                    <div class="ci-edit">
-                                        <a href="#" class="edit fa fa-edit"></a>
-                                        <a href="#" class="edit fa fa-trash"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ci-total">Subtotal: $750.00</div>
-                            <div class="cart-btn">
-                                <a href="#">View Bag</a>
-                                <a href="#">Checkout</a>
-                            </div>
-                        </div>
+                        <a href="<?php echo $url;?>carrito-de-compras">
+                        <i class="fa fa-shopping-cart "></i>&nbsp;&nbsp;Mi carrito - <span class="cantidadCesta">5</span> item(s)
+                        </a>
                     </div>
                 </div>
             </div>

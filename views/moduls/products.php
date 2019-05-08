@@ -176,9 +176,12 @@ echo '<div class="col-md-3 col-sm-4 clear-box">
             <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
             <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
             <div class="product-overlay">
-                <a href="#" class="addcart fa fa-shopping-cart"></a>
-                <a href="#" class="compare fa fa-signal"></a>
-                <a href="#" idProducto="'.$value["id_product"].'" class="likeitem fa fa-heart-o deseos"></a>
+            <button type="button" class="addcart agregarCarrito"  idProducto="'.$value["id_product"].'" imagen="'.$server.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" peso="'.$value["peso"].'" data-toggle="tooltip"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+            </button>
+                <button type="button" class="btn btn-default btn-xs deseos"  idProducto="'.$value["id_product"].'" data-toggle="tooltip">
+
+                      <i class="fa fa-heart" aria-hidden="true"></i></button>
             </div>
         </div>
         <div class="product-info">
@@ -188,7 +191,7 @@ echo '<div class="col-md-3 col-sm-4 clear-box">
             
         }
         else{
-            echo '<span class="product-price" style="font-weight:bold;">$'.$value["precio"].' MXN</span>';
+            echo '<span class="product-price" style="font-weight:bold;">$ '.$value["precio"].' MXN</span>';
         }
             echo '<div class="item-colors">  
             </div>

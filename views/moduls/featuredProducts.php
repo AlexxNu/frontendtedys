@@ -118,19 +118,22 @@ echo '<div class="featured-products featured-products2">
                             <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                             <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                             <div class="product-overlay">
-                                <a href="#" class="addcart fa fa-shopping-cart"></a>
-                                <a href="#" class="compare fa fa-signal"></a>
-                                <a href="#" idProducto="'.$value["id_product"].'" class="likeitem fa fa-heart-o deseos"></a>
+                            <button type="button" class="addcart agregarCarrito"  idProducto="'.$value["id_product"].'" imagen="'.$server.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" peso="'.$value["peso"].'" data-toggle="tooltip"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+                            </button>
+                                <button type="button" class="btn btn-default btn-xs deseos"  idProducto="'.$value["id_product"].'" data-toggle="tooltip">
+
+						  			<i class="fa fa-heart" aria-hidden="true"></i></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4 class="product-title"><a href="'.$value["ruta"].'">'.$value["titulo"].'</a></h4>';
                             if($value["oferta"] != 0){
-                                echo '<span class="product-price" style="font-weight:bold;"><small class="cutprice" style="font-weight:normal;">$'.$value["precio"].' MXN </small> $'.$value["precioOferta"].' MXN</span>';
+                                echo '<span class="product-price" style="font-weight:bold;"><small class="cutprice" style="font-weight:normal;">$ '.$value["precio"].' MXN </small> $ '.$value["precioOferta"].' MXN</span>';
                             
                         }
                         else{
-                            echo '<span class="product-price" style="font-weight:bold;">$'.$value["precio"].' MXN</span>';
+                            echo '<span class="product-price" style="font-weight:bold;">$ '.$value["precio"].' MXN</span>';
                         }
                             echo '<div class="item-colors">  
                             </div>

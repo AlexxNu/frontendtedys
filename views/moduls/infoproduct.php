@@ -64,18 +64,18 @@
                                             //PRECIO DEL PRODUCTO
                                             echo '<h3>'.$infoproducto["titulo"].'</h3>
                                             <span class="label label-warning">NUEVO</span>"
-                                            <div class="ps-price"> $'.$infoproducto["precioOferta"].'</div>';
+                                            <div class="ps-price">$ '.$infoproducto["precioOferta"].'</div>';
                                         }
                                         }else{
                                             if($infoproducto["nuevo"]==0){
                                             echo '<span class="badge offer">-'.$infoproducto["descuentoOferta"].'%</span>
                                             <h3>'.$infoproducto["titulo"].'</h3><br>
-                                            <div class="ps-price"><span>$'.$infoproducto["precio"].'</span> $'.$infoproducto["precioOferta"].'</div>';
+                                            <div class="ps-price"><span>$ '.$infoproducto["precio"].'</span> $ '.$infoproducto["precioOferta"].'</div>';
                                         }else{
                                             echo '<span class="badge offer">-'.$infoproducto["descuentoOferta"].'%</span>
                                             <h3>'.$infoproducto["titulo"].'</h3>
                                             <span class="label label-warning">NUEVO</span>"
-                                            <div class="ps-price"><span>$'.$infoproducto["precio"].'</span> $'.$infoproducto["precioOferta"].'</div>';
+                                            <div class="ps-price"><span>$ '.$infoproducto["precio"].'</span> $ '.$infoproducto["precioOferta"].'</div>';
                                               
                                         }
                                     }
@@ -140,16 +140,20 @@
                                         </div>
                                         <div class="space20"></div>
                                         <div class="share">
-                                            <span>
-                                                <a href="#" class="fa fa-heart-o"></a>
-                                                <a href="#" class="fa fa-signal"></a>
-                                                <a href="#" class="fa fa-envelope-o"></a>
-                                            </span>
+                                            
                                             <div class="addthis_native_toolbox"></div>
                                         </div>
                                         <div class="space20"></div>
                                         <div class="sep"></div>
-                                        <a class="addtobag" href="#">Agregar al Carrito</a>
+                                         <?php 
+                                         echo '<button class="addtobag agregarCarrito"  idProducto="'.$infoproducto["id_product"].'" imagen="'.$server.$infoproducto["portada"].'" titulo="'.$infoproducto["titulo"].'" precio="'.$infoproducto["precio"].'" peso="'.$infoproducto["peso"].'">
+
+                                         <small>AGREGAR AL CARRITO</small> 
+     
+                                         <i class="fa fa-shopping-cart col-md-0"></i>
+     
+                                         </button>';
+                                         ?>
                                     </div>
                                 </div>
                             </div>
@@ -533,9 +537,12 @@ foreach ($comentarios as $key => $value) {
                         <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                         <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
                         <div class="product-overlay">
-                            <a href="#" class="addcart fa fa-shopping-cart"></a>
-                            <a href="#" class="compare fa fa-signal"></a>
-                            <a href="#" idProducto="'.$value["id_product"].'" class="likeitem fa fa-heart-o deseos"></a>
+                        <button type="button" class="addcart agregarCarrito"  idProducto="'.$value["id_product"].'" imagen="'.$server.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" peso="'.$value["peso"].'" data-toggle="tooltip"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+                        </button>
+                            <button type="button" class="btn btn-default btn-xs deseos"  idProducto="'.$value["id_product"].'" data-toggle="tooltip">
+
+                                  <i class="fa fa-heart" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <div class="product-info">
