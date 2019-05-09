@@ -175,7 +175,7 @@ if($cliente->getAccessToken()){
                 <div class="col-md-4 col-sm-4">
                     <div class="topcart pull-right">
                         <a href="<?php echo $url;?>carrito-de-compras">
-                        <i class="fa fa-shopping-cart "></i>&nbsp;&nbsp;Mi carrito - <span class="cantidadCesta">5</span> item(s)
+                        <i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Mi carrito - <span class="cantidadCesta"></span> item(s)
                         </a>
                     </div>
                 </div>
