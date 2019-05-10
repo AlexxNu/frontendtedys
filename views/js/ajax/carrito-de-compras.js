@@ -65,7 +65,7 @@ if (localStorage.getItem("listaProductos") != null) {
 
             '<br>' +
 
-            '<p class="precioCarritoCompra text-center">USD $<span>' + item.precio + '</span></p>' +
+            '<p class="precioCarritoCompra text-center">MXN $<span>' + item.precio + '</span></p>' +
 
             '</div>' +
 
@@ -91,7 +91,7 @@ if (localStorage.getItem("listaProductos") != null) {
 
             '<p class="subTotal' + item.idProducto + ' subtotales">' +
 
-            '<strong>USD $<span>' + item.precio + '</span></strong>' +
+            '<strong>MXN $<span>' + item.precio + '</span></strong>' +
 
             '</p>' +
 
@@ -287,7 +287,7 @@ $(".cantidadItem").change(function() {
         var idProducto = $(this).attr("idProducto");
         var item = $(this).attr("item");
 
-        $(".subTotal" + idProducto).html('<strong>USD $<span>' + (cantidad * precio) + '</span></strong>');
+        $(".subTotal" + idProducto).html('<strong>MXN $<span>' + (cantidad * precio) + '</span></strong>');
         /*=============================================
         ACTUALIZAR LA CANTIDAD EN EL LOCALSTORAGE
         =============================================*/
@@ -342,7 +342,7 @@ for (var i = 0; i < precioCarritoCompra.length; i++) {
     var cantidadItemArray = $(cantidadItem[i]).html();
     var idProductoArray = $(cantidadItem[i]).attr("idProducto");
 
-    $(".subTotal" + idProductoArray).html('<strong>USD $<span>' + (precioCarritoCompraArray * cantidadItemArray) + '</span></strong>');
+    $(".subTotal" + idProductoArray).html('<strong>MXN $<span>' + (precioCarritoCompraArray * cantidadItemArray) + '</span></strong>');
     sumaSubtotales();
     cestaCarrito(precioCarritoCompra.length);
 }
@@ -375,7 +375,7 @@ function sumaSubtotales() {
 
     var sumaTotal = arraySumaSubtotales.reduce(sumaArraySubtotales);
 
-    $(".sumaSubTotal").html('<strong>USD $<span>' + (sumaTotal).toFixed(2) + '</span></strong>');
+    $(".sumaSubTotal").html('<strong>MXN $<span>' + (sumaTotal).toFixed(2) + '</span></strong>');
 }
 
 /*=============================================
@@ -440,12 +440,19 @@ $("#btnCheckout").click(function() {
         var subtotal = $(".cuerpoCarrito .subtotales span, .comprarAhora .subtotales span");
         var tipoArray = [];
         var cantidadPeso = [];
-        var sumaSubTotal = $(".sumaSubTotal span");
+				
+				
+				/*=============================================
+				SUMA SUBTOTAL
+				=============================================*/
 
-        $(".valorSubtotal").html($(sumaSubTotal).html());
+       var sumaSubTotal = $(".sumaSubTotal span")
+	
+			$(".valorSubtotal").html($(sumaSubTotal).html());
+			$(".valorSubtotal").attr("valor",$(sumaSubTotal).html());
 
         /*=============================================
-	TASAS DE IMPUESTO
+				TASAS DE IMPUESTO
 				=============================================*/
 
         var impuestoTotal = ($(".valorSubtotal").html() * $("#tasaImpuesto").val()) / 100;
@@ -456,8 +463,8 @@ $("#btnCheckout").click(function() {
         sumaTotalCompra()
 
         /*=============================================
-		VARIABLES ARRAY
-	=============================================*/
+				VARIABLES ARRAY
+				=============================================*/
 
         for (var i = 0; i < titulo.length; i++) {
 
@@ -489,14 +496,13 @@ $("#btnCheckout").click(function() {
 
             /*=============================================
             SELECCIONAR PAÍS DE ENVÍO SI HAY PRODUCTOS FÍSICOS
-            =============================================*/
+					=============================================*/
+				}
             $(".seleccionePais").html('<select class="form-control" id="seleccionarPais" required>' +
 
                 '<option value="">Seleccione el país</option>' +
 
                 '</select>');
-            $()
-
 
             $.ajax({
                 url: rutaOculta + "views/js/plugins/countries.json",
@@ -526,7 +532,9 @@ $("#btnCheckout").click(function() {
             =============================================*/
             $("#seleccionarPais").change(function() {
 
-                $(".alert").remove();
+								$(".alert").remove();
+								
+								
 
                 var pais = $(this).val();
                 var tasaPais = $("#tasaPais").val();
@@ -561,12 +569,28 @@ $("#btnCheckout").click(function() {
                         $(".valorTotalEnvio").attr("valor", resultadoPeso);
                     }
 
-                }
+								}
+								/*=============================================
+            		RETORNAR EL CAMBIO DE DIVISA A DOLAR
+            		=============================================*/
+								$("#cambiarDivisa").val("MXN");
+
+								$(".cambioDivisa").html("MXN");
+
+								$(".valorSubtotal").html((1*Number($(".valorSubtotal").attr("valor"))).toFixed(2))
+								$(".valorTotalEnvio").html((1*Number($(".valorTotalEnvio").attr("valor"))).toFixed(2))
+								$(".valorTotalImpuesto").html((1*Number($(".valorTotalImpuesto").attr("valor"))).toFixed(2))
+								$(".valorTotalCompra").html((1*Number($(".valorTotalCompra").attr("valor"))).toFixed(2))
+
+								var valorItem = $(".valorItem");
+
+								for(var i=0; i< valorItem.length; i++){
+								$(valorItem[i]).html((1*Number($(valorItem[i]).attr("valor"))).toFixed(2))
+								}
+
                 sumaTotalCompra()
 
             })
-
-        }
     })
     /*=============================================
     /*=============================================
@@ -582,9 +606,123 @@ function sumaTotalCompra() {
         Number($(".valorTotalImpuesto").html());
 
 
-    $(".valorTotalCompra").html((sumaTotalTasas).toFixed(2));
+				$(".valorTotalCompra").html((sumaTotalTasas).toFixed(2));
+				$(".valorTotalCompra").attr("valor",(sumaTotalTasas).toFixed(2));
 
 }
+/*=============================================
+/*=============================================
+/*=============================================
+/*=============================================
+MÉTODO DE PAGO PARA CAMBIO DE DIVISA
+=============================================*/
+
+var metodoPago = "paypal";
+divisas(metodoPago);
+
+
+$("input[name='pago']").change(function(){
+
+	var metodoPago = $(this).val();
+
+	divisas(metodoPago);
+
+})
+
+/*=============================================
+/*=============================================
+/*=============================================
+/*=============================================
+FUNCIÓN PARA EL CAMBIO DE DIVISA
+=============================================*/
+
+function divisas(metodoPago){
+
+	$("#cambiarDivisa").html("");
+
+	if(metodoPago == "paypal"){
+
+		$("#cambiarDivisa").append('<option value="MXN">MXN</option>'+
+															'<option value="USD">USD</option>'+
+			                       '<option value="EUR">EUR</option>'+
+			                       '<option value="GBP">GBP</option>'+
+			                       '<option value="JPY">JPY</option>'+
+			                       '<option value="CAD">CAD</option>'+
+			                       '<option value="BRL">BRL</option>')
+
+	}else{
+
+		$("#cambiarDivisa").append('<option value="MXN">MXN</option>'+
+														'<option value="USD">USD</option>'+
+			                       '<option value="PEN">PEN</option>'+
+			                       '<option value="COP">COP</option>'+
+			                       '<option value="CLP">CLP</option>'+
+			                       '<option value="ARS">ARS</option>'+
+			                       '<option value="BRL">BRL</option>')
+
+	}
+
+}
+
+/*=============================================
+/*=============================================
+/*=============================================
+/*=============================================
+CAMBIO DE DIVISA
+=============================================*/
+
+var divisaBase = "MXN";
+
+$("#cambiarDivisa").change(function(){
+
+	$(".alert").remove();
+
+	if($("#seleccionarPais").val() == ""){
+
+		$("#cambiarDivisa").after('<div class="alert alert-warning">No ha seleccionado el país de envío</div>');
+
+		return;
+
+	}
+	
+	var divisa = $(this).val();
+
+	$.ajax({
+
+		url: "http://free.currencyconverterapi.com/api/v6/convert?q="+divisaBase+"_"+divisa+"&compact=y&apiKey=a01ebaf9a1c69eb4ff79",
+		type:"GET",
+		cache: false,
+	    contentType: false,
+	    processData: false,
+	    dataType:"jsonp",
+	    success:function(respuesta){
+	        	
+				var divisaString = JSON.stringify(respuesta);
+				var conversion = divisaString.substr(18,4);
+				if(divisa == "MXN"){
+					conversion = 1;
+				}
+				$(".cambioDivisa").html(divisa);
+
+				$(".valorSubtotal").html((Number(conversion)*Number($(".valorSubtotal").attr("valor"))).toFixed(2))
+				$(".valorTotalEnvio").html((Number(conversion)*Number($(".valorTotalEnvio").attr("valor"))).toFixed(2))
+				$(".valorTotalImpuesto").html((Number(conversion)*Number($(".valorTotalImpuesto").attr("valor"))).toFixed(2))
+				$(".valorTotalCompra").html((Number(conversion)*Number($(".valorTotalCompra").attr("valor"))).toFixed(2))
+
+				var valorItem = $(".valorItem");
+
+				for(var i=0; i< valorItem.length; i++){
+					$(valorItem[i]).html((Number(conversion)*Number($(valorItem[i]).attr("valor"))).toFixed(2))
+				}
+
+	    }
+
+		})	
+
+	})
+
+
+
 
 /*=============================================
 /*=============================================
@@ -602,5 +740,59 @@ $(".btnPagar").click(function() {
 
         return;
 
-    }
+		}
+		
+		var divisa = $("#cambiarDivisa").val();
+		var total = $(".valorTotalCompra").html();
+		var totalEncriptado = localStorage.getItem("total");
+		var impuesto = $(".valorTotalImpuesto").html();
+		var envio = $(".valorTotalEnvio").html();
+		var subtotal = $(".valorSubtotal").html();
+		var titulo = $(".valorTitulo");
+		var cantidad = $(".valorCantidad");
+		var valorItem = $(".valorItem");
+		var idProducto = $('.cuerpoCarrito button, .comprarAhora button');
+
+		var tituloArray = [];
+		var cantidadArray = [];
+		var valorItemArray = [];
+		var idProductoArray = [];
+
+			for(var i = 0; i < titulo.length; i++){
+
+				tituloArray[i] = $(titulo[i]).html();
+				cantidadArray[i] = $(cantidad[i]).html();
+				valorItemArray[i] = $(valorItem[i]).html();
+				idProductoArray[i] = $(idProducto[i]).attr("idProducto");
+
+			}
+
+	var datos = new FormData();
+
+	datos.append("divisa", divisa);
+	datos.append("total",total);
+	datos.append("totalEncriptado",totalEncriptado);
+	datos.append("impuesto",impuesto);
+	datos.append("envio",envio);
+	datos.append("subtotal",subtotal);
+	datos.append("tituloArray",tituloArray);
+	datos.append("cantidadArray",cantidadArray);
+	datos.append("valorItemArray",valorItemArray);
+	datos.append("idProductoArray",idProductoArray);
+
+	$.ajax({
+		 url:rutaOculta+"ajax/carrito.ajax.php",
+		 method:"POST",
+		 data: datos,
+		 cache: false,
+         contentType: false,
+         processData: false,
+         success:function(respuesta){
+         	   	
+               
+
+         }
+
+	})
+
 })

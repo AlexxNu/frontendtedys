@@ -37,7 +37,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/isotope/isotope.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/slick/slick.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/rs-plugin/css/settings.css">
-        <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.css">
+        
         <link rel="stylesheet" href="<?php echo $url;?>views/css/subscribe-better.css">
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/plugin/owl-carousel/owl.carousel.css">
@@ -80,7 +80,7 @@
         <script src="<?php echo $url;?>views/js/jquery.sticky.js"></script>
         <script src="<?php echo $url;?>views/js/jquery.subscribe-better.js"></script>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <script src="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.min.js"></script>
+        
         <script src="<?php echo $url;?>views/js/main.js"></script>
         <script src="<?php echo $url;?>views/js/buscador.js"></script>
         <script src="<?php echo $url;?>views/js/plugins/sweetalert2.min.js"></script>

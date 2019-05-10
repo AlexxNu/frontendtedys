@@ -85,6 +85,13 @@ class ComposerStaticInit183b7d098d29f789da6a459ef4662578
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
+        ),
         'G' => 
         array (
             'Google_Service_' => 
