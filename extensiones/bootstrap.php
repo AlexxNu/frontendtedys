@@ -3,6 +3,7 @@
 require __DIR__  . '/vendor/autoload.php';
 
 
+
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 
@@ -20,7 +21,7 @@ $apiContext = new ApiContext(
         
         $clienteIdPaypal,
         $llaveSecretaPaypal
-    
+     
     )
 );
 

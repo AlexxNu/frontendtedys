@@ -10,14 +10,35 @@ class AjaxProductos{
 
     public function ajaxVistaProducto(){
 
-        $datos = array("valor"=>$this->valor,
-                        "item"=>$this->item,
-                        "ruta"=>$this->ruta);
-        $respuesta = ControllerProducts::ctrVistas($datos);
+        $item1 = $this->item;
+		$valor1 = $this->valor;
+		
+		$item2 = "ruta";
+		$valor2 = $this->ruta;
+        $respuesta = ControllerProducts::ctrActualizarProducto($item1, $valor1, $item2, $valor2);
 
         echo json_encode($respuesta);
     }
-}
+    /*=============================================
+	TRAER EL PRODUCTO DE ACUERDO AL ID
+	=============================================*/
+
+	public $id;
+
+	public function ajaxTraerProducto(){
+
+		$item = "id_product";
+		$valor = $this->id;
+
+		$respuesta = ControllerProducts::ctrMostrarInfoProduct($item, $valor);
+
+		echo json_encode($respuesta);
+	}
+
+
+} 
+
+
 if(isset($_POST["valor"])){
     $vista = new AjaxProductos();
     $vista ->valor =$_POST["valor"];
@@ -27,3 +48,10 @@ if(isset($_POST["valor"])){
     $vista ->ajaxVistaProducto();
 }
 
+if(isset($_POST["id"])){
+
+	$producto = new AjaxProductos();
+	$producto ->id = $_POST["id"];
+	$producto -> ajaxTraerProducto();
+
+}

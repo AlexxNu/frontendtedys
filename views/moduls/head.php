@@ -288,19 +288,11 @@ echo '<li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages</a>
-                                    <ul class="dropdown-menu submenu" role="menu">                                         
-                                        <li><a href="contact-1.html">Contact Style 1</a></li>
-                                        <li><a href="contact-2.html">Contact Style 2</a></li>
-                                        <li><a href="account-information.html"> Account Information </a></li>
-                                        <li><a href="my-account.html">My Account</a></li>                                        
-                                        <li><a href="cng-pw.html">Change Password</a></li>
-                                        <li><a href="address-book.html">Address Books</a></li>
-                                        <li><a href="order-history.html">Order History</a></li>
-                                        <li><a href="review-rating.html">Reviews and Ratings</a></li>
-                                        <li><a href="return.html">Returns Requests</a></li>
-                                        <li><a href="newsletter.html">Newsletter</a></li>
-                                        <li><a href="myaccount-leftsidebar.html">Left Sidebar</a></li>
+                                    <?php 
+                                    echo ' <a href="'.$url.'contacto">CONTACTO</a>';
+                                    ?>
+                                   
+                                   
                                     </ul>
                                 </li>
                             </ul>

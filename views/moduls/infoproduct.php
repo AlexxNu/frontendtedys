@@ -128,15 +128,13 @@
                                         <div class="row select-wraps">
                                             
                                             <div class="col-md-5 col-sm-5">
-                                                <p>Cantidad<span>*</span></p>
-                                                <select>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
+                                            <div class="shared-panel">
+                                            <span>Compartir:</span><br>
+                                            <p class="shared fb" title="Facebook"></p>	
+                                            
+                                            <p class="shared ce" id="sml" title="Email"></p>		
+                                            </div>                                            
+</div>
                                         </div>
                                         <div class="space20"></div>
                                         <div class="share">
@@ -613,5 +611,32 @@ $("#verMas").click(function(e){
 
 })
 
+
+
    
 </script>
+
+<?php
+
+	echo '<script type="application/ld+json">
+
+			{
+			  "@context": "http://schema.org/",
+			  "@type": "Product",
+			  "name": "'.$infoproducto["titulo"].'",
+			  "image": [';
+
+			  for($i = 0; $i < count($multimedia); $i ++){
+
+			  	echo $server.$multimedia[$i]["foto"].',';
+
+			  }
+			
+			  echo '],
+			  "description": "'.$infoproducto["descripcion"].'"
+	  
+			}
+
+        </script>';
+        
+?>

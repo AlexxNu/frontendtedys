@@ -15,9 +15,8 @@ use PayPal\Api\Transaction;
 class Paypal{
 
 	static public function mdlPagoPaypal($datos){
-
 		require __DIR__ . '/bootstrap.php';
-
+		
 		$tituloArray = explode(",", $datos["tituloArray"]);
 		$cantidadArray = explode(",", $datos["cantidadArray"]);
 		$valorItemArray = explode(",", $datos["valorItemArray"]);
@@ -81,7 +80,6 @@ class Paypal{
 			    ->setRedirectUrls($redirectUrls)
 				->setTransactions(array($transaction));
 				
-
 
 		#Tratar de ejcutar un proceso y si falla ejecutar una rutina de error
 		try {

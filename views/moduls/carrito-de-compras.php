@@ -10,7 +10,7 @@ BREADCRUMB CARRITO DE COMPRAS
 			
 			<ul class="breadcrumb fondoBreadcrumb text-uppercase">
 				
-				<li><a href="<?php echo $url;  ?>">CARRITO DE COMPRAS</a></li>
+				<li><a href="<?php echo $url;  ?>">INICIO</a></li>
 				<li class="active pagActiva"><?php echo $routes[0] ?></li>
 
 			</ul>
@@ -166,7 +166,7 @@ VENTANA MODAL PARA CHECKOUT
 
 						</center>
 
-						<img src="<?php echo $url; ?>views/images/plantilla/payu.jpg" class="img-thumbnail">
+						<img src="<?php echo $url; ?>views/images/plantilla/efectivo.png" class="img-thumbnail">
 
 					</figure>
 

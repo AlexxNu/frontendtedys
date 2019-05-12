@@ -45,19 +45,9 @@ class AjaxCarrito{
 
 				echo $respuesta;
 
-		}
+		
 	}
-
-	/*=============================================
-	MÉTODO PAYU
-	=============================================*/
-
-	public function ajaxTraerComercioPayu(){
-
-		$respuesta = ControladorCarrito::ctrMostrarTarifas(); 
-
-		echo json_encode($respuesta);
-	}
+}
 
 }
 
@@ -79,11 +69,11 @@ if(isset($_POST["divisa"])){
 
 		$verificarProductos = ControllerProducts::ctrMostrarInfoProduct($item, $valor);
 
-		$divisa = file_get_contents("http://free.currencyconverterapi.com/api/v6/convert?q=USD_".$_POST["divisa"]."&compact=y&apiKey=a01ebaf9a1c69eb4ff79");
+		$divisa = file_get_contents("http://free.currencyconverterapi.com/api/v6/convert?q=MXN_".$_POST["divisa"]."&compact=y&apiKey=a01ebaf9a1c69eb4ff79");
 
 		$jsonDivisa = json_decode($divisa, true);
 
-		$conversion = number_format($jsonDivisa["USD_".$_POST["divisa"]]["val"],2);
+		$conversion = number_format($jsonDivisa["MXN_".$_POST["divisa"]]["val"],2);
 
 		if($verificarProductos["precioOferta"] == 0){
 
@@ -104,9 +94,8 @@ if(isset($_POST["divisa"])){
 			return;
 
 		}
-
 	}
-
+	
 	$paypal = new AjaxCarrito();
 	$paypal ->divisa = $_POST["divisa"];
 	$paypal ->total = $_POST["total"];
@@ -119,18 +108,6 @@ if(isset($_POST["divisa"])){
 	$paypal ->valorItemArray = $_POST["valorItemArray"];
 	$paypal ->idProductoArray = $_POST["idProductoArray"];
 	$paypal -> ajaxEnviarPaypal();
-
-
-}
-
-/*=============================================
-MÉTODO PAYU
-=============================================*/	
-
-if(isset($_POST["metodoPago"]) && $_POST["metodoPago"] == "payu"){
-
-	$payu = new AjaxCarrito();
-	$payu -> ajaxTraerComercioPayu();
 
 
 }

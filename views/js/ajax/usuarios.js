@@ -1,13 +1,13 @@
 //CAPTURA DE RUTA
 var rutaActual = location.href;
 
-$(".btnIngreso, .facebook, .google").click(function(){
-    localStorage.setItem("rutaActual",rutaActual);
+$(".btnIngreso, .facebook, .google").click(function() {
+    localStorage.setItem("rutaActual", rutaActual);
 });
 
 //FORMATEAR LOS INPUT
-$("input").focus(function(){
-$(".alert").remove();
+$("input").focus(function() {
+    $(".alert").remove();
 });
 
 
@@ -15,110 +15,110 @@ $(".alert").remove();
 var validarEmailRepetido = false;
 var rutaOculta = $("#rutaOculta").val();
 
-$("#regEmail").change(function(){
+$("#regEmail").change(function() {
 
-	var email = $("#regEmail").val();
+    var email = $("#regEmail").val();
 
-	var datos = new FormData();
-	datos.append("validarEmail", email);
+    var datos = new FormData();
+    datos.append("validarEmail", email);
 
-	$.ajax({
+    $.ajax({
 
-		url:rutaOculta+"ajax/usuarios.ajax.php",
-		method: "POST",
-		data: datos,
-		cache: false,
-		contentType: false,
-		processData: false,
-		success:function(respuesta){
-            if(respuesta == "false"){
+        url: rutaOculta + "ajax/usuarios.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            if (respuesta == "false") {
 
-				$(".alert").remove();
-				validarEmailRepetido = false;
+                $(".alert").remove();
+                validarEmailRepetido = false;
 
-			}else{
+            } else {
 
-				var modo = JSON.parse(respuesta).modo;
-				
-				if(modo == "directo"){
+                var modo = JSON.parse(respuesta).modo;
 
-					modo = "esta página";
-				}
+                if (modo == "directo") {
 
-				$("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> El correo electrónico ya existe, fue registrado a través de '+modo+', por favor ingrese otro diferente</div>')
+                    modo = "esta página";
+                }
 
-					validarEmailRepetido = true;
+                $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> El correo electrónico ya existe, fue registrado a través de ' + modo + ', por favor ingrese otro diferente</div>')
 
-			}
+                validarEmailRepetido = true;
+
+            }
         }
     });
 });
 
 
 //VALIDAR EL REGISTRO DE USUARIOS
-function registroUsuario(){
+function registroUsuario() {
     //validar el nombre
- var nombre = $("#regUsuario").val();
- if(nombre != ""){
-     var expresion = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
-     if(!expresion.test(nombre)){
-         $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten numeros ni caracteres especiales.</div>');
-         return false;
-     }
-     
- }else{
-     $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
-     return false;
+    var nombre = $("#regUsuario").val();
+    if (nombre != "") {
+        var expresion = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
+        if (!expresion.test(nombre)) {
+            $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten numeros ni caracteres especiales.</div>');
+            return false;
+        }
 
- }
-     //validar el email
-     var email = $("#regEmail").val();
- if(email != ""){
-     var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-     if(!expresion.test(email)){
-         $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Escriba correctamente el correo electronico.</div>');
-         return false;
-     }
-     if(validarEmailRepetido){
-        $("#regEmail").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> El correo electrónico ya existe, por favor ingrese otro diferente.</div>')
+    } else {
+        $("#regUsuario").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
         return false;
-     }
-     
- }else{
-     $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
-     return false;
 
- }
+    }
+    //validar el email
+    var email = $("#regEmail").val();
+    if (email != "") {
+        var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        if (!expresion.test(email)) {
+            $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Escriba correctamente el correo electronico.</div>');
+            return false;
+        }
+        if (validarEmailRepetido) {
+            $("#regEmail").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> El correo electrónico ya existe, por favor ingrese otro diferente.</div>')
+            return false;
+        }
 
- //Validar contraseña
- var password = $("#regPassword").val();
+    } else {
+        $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Este campo es obligatorio.</div>');
+        return false;
 
- if(password != ""){
+    }
 
-     var expresion = /^[a-zA-Z0-9]*$/;
+    //Validar contraseña
+    var password = $("#regPassword").val();
 
-     if(!expresion.test(password)){
+    if (password != "") {
 
-         $("#regPassword").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten caracteres especiales</div>')
+        var expresion = /^[a-zA-Z0-9]*$/;
 
-         return false;
+        if (!expresion.test(password)) {
 
-     }
+            $("#regPassword").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> No se permiten caracteres especiales</div>')
 
- }else{
+            return false;
 
-     $("#regPassword").parent().before('<div class="alert alert-warning"><strong>ATENCIÓN:</strong> Este campo es obligatorio</div>')
+        }
 
-     return false;
- }
+    } else {
+
+        $("#regPassword").parent().before('<div class="alert alert-warning"><strong>ATENCIÓN:</strong> Este campo es obligatorio</div>')
+
+        return false;
+    }
 
     //validar terminos o politicas de privacidad
-var politicas =$("#regPoliticas:checked").val();
- if(politicas != "on"){
-     $("#regPoliticas").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Debe aceptar nuestras condiciones de uso y politicas de privacidad</div>');
-     return false;
- }
- return true;
+    var politicas = $("#regPoliticas:checked").val();
+    if (politicas != "on") {
+        $("#regPoliticas").parent().before('<div class="alert alert-warning"><strong>ATENCION:</strong> Debe aceptar nuestras condiciones de uso y politicas de privacidad</div>');
+        return false;
+    }
+    return true;
 }
 
 
@@ -126,70 +126,68 @@ var politicas =$("#regPoliticas:checked").val();
 CAMBIAR FOTO
 =============================================*/
 
-$("#btnCambiarFoto").click(function(){
+$("#btnCambiarFoto").click(function() {
 
-	$("#imgPerfil").toggle();
-	$("#subirImagen").toggle();
+    $("#imgPerfil").toggle();
+    $("#subirImagen").toggle();
 
 })
 
-$("#datosImagen").change(function(){
+$("#datosImagen").change(function() {
 
-	var imagen = this.files[0];
+    var imagen = this.files[0];
 
-	/*=============================================
-	VALIDAMOS EL FORMATO DE LA IMAGEN
-	=============================================*/
-	
-	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+    /*=============================================
+    VALIDAMOS EL FORMATO DE LA IMAGEN
+    =============================================*/
 
-		$("#datosImagen").val("");
+    if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
 
-		swal({
-		  title: "Error al subir la imagen",
-		  text: "¡La imagen debe estar en formato JPG o PNG!",
-		  type: "error",
-		  confirmButtonText: "¡Cerrar!",
-		  closeOnConfirm: false
-		},
-		function(isConfirm){
-				 if (isConfirm) {	   
-				    window.location = rutaOculta+"perfil";
-				  } 
-		});
+        $("#datosImagen").val("");
 
-	}
+        swal({
+                title: "Error al subir la imagen",
+                text: "¡La imagen debe estar en formato JPG o PNG!",
+                type: "error",
+                confirmButtonText: "¡Cerrar!",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    window.location = rutaOculta + "perfil";
+                }
+            });
 
-	else if(Number(imagen["size"]) > 2000000){
+    } else if (Number(imagen["size"]) > 2000000) {
 
-		$("#datosImagen").val("");
+        $("#datosImagen").val("");
 
-		swal({
-		  title: "Error al subir la imagen",
-		  text: "¡La imagen no debe pesar más de 2 MB!",
-		  type: "error",
-		  confirmButtonText: "¡Cerrar!",
-		  closeOnConfirm: false
-		},
-		function(isConfirm){
-				 if (isConfirm) {	   
-				    window.location = rutaOculta+"perfil";
-				  } 
-		});
+        swal({
+                title: "Error al subir la imagen",
+                text: "¡La imagen no debe pesar más de 2 MB!",
+                type: "error",
+                confirmButtonText: "¡Cerrar!",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    window.location = rutaOculta + "perfil";
+                }
+            });
 
-	}else{
+    } else {
 
-		var datosImagen = new FileReader;
-		datosImagen.readAsDataURL(imagen);
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
 
-		$(datosImagen).on("load", function(event){
+        $(datosImagen).on("load", function(event) {
 
-			var rutaImagen = event.target.result;
-			$(".previsualizar").attr("src",  rutaImagen);
+            var rutaImagen = event.target.result;
+            $(".previsualizar").attr("src", rutaImagen);
 
-		})
+        })
 
-	}
+    }
 
 
 })
@@ -198,11 +196,11 @@ $("#datosImagen").change(function(){
 COMENTARIOS ID
 =============================================*/
 
-$(".calificarProducto").click(function(){
+$(".calificarProducto").click(function() {
 
-	var idComentario = $(this).attr("idComentario");
+    var idComentario = $(this).attr("idComentario");
 
-	$("#idComentario").val(idComentario);
+    $("#idComentario").val(idComentario);
 
 })
 
@@ -210,93 +208,93 @@ $(".calificarProducto").click(function(){
 COMENTARIOS CAMBIO DE ESTRELLAS
 =============================================*/
 
-$("input[name='puntaje']").change(function(){
+$("input[name='puntaje']").change(function() {
 
-	var puntaje = $(this).val();
-	
-	switch(puntaje){
+    var puntaje = $(this).val();
 
-		case "0.5":
-		$("#estrellas").html('<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+    switch (puntaje) {
 
-		case "1.0":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "0.5":
+            $("#estrellas").html('<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "1.5":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "1.0":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "2.0":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "1.5":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "2.5":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "2.0":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "3.0":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "2.5":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "3.5":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "3.0":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "4.0":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
-		break;
+        case "3.5":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "4.5":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i>');
-		break;
+        case "4.0":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-o text-success" aria-hidden="true"></i>');
+            break;
 
-		case "5.0":
-		$("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i> '+
-							 '<i class="fa fa-star text-success" aria-hidden="true"></i>');
-		break;
+        case "4.5":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star-half-o text-success" aria-hidden="true"></i>');
+            break;
 
-	}
+        case "5.0":
+            $("#estrellas").html('<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i> ' +
+                '<i class="fa fa-star text-success" aria-hidden="true"></i>');
+            break;
+
+    }
 
 })
 
@@ -304,31 +302,31 @@ $("input[name='puntaje']").change(function(){
 VALIDAR EL COMENTARIO
 =============================================*/
 
-function validarComentario(){
+function validarComentario() {
 
-	var comentario = $("#comentario").val();
+    var comentario = $("#comentario").val();
 
-	if(comentario != ""){
+    if (comentario != "") {
 
-		var expresion = /^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]*$/;
+        var expresion = /^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]*$/;
 
-		if(!expresion.test(comentario)){
+        if (!expresion.test(comentario)) {
 
-			$("#comentario").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> No se permiten caracteres especiales como por ejemplo !$%&/?¡¿[]*</div>');
+            $("#comentario").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> No se permiten caracteres especiales como por ejemplo !$%&/?¡¿[]*</div>');
 
-			return false;
+            return false;
 
-		}
+        }
 
-	}else{
+    } else {
 
-		$("#comentario").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Campo obligatorio</div>');
+        $("#comentario").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Campo obligatorio</div>');
 
-		return false;
+        return false;
 
-	}
+    }
 
-	return true;
+    return true;
 
 }
 
@@ -336,79 +334,79 @@ function validarComentario(){
 LISTA DE DESEOS
 =============================================*/
 
-$(".deseos").click(function(){
+$(".deseos").click(function() {
 
-	var idProducto = $(this).attr("idProducto");
-	console.log("idProducto", idProducto);
+        var idProducto = $(this).attr("idProducto");
+        console.log("idProducto", idProducto);
 
-	var idUsuario = localStorage.getItem("usuario");
-	console.log("idUsuario", idUsuario);
+        var idUsuario = localStorage.getItem("usuario");
+        console.log("idUsuario", idUsuario);
 
-	if(idUsuario == null){
+        if (idUsuario == null) {
 
-		swal({
-		  title: "Debe ingresar al sistema",
-		  text: "¡Para agregar un producto a la 'lista de deseos' debe primero ingresar al sistema!",
-		  type: "warning",
-		  confirmButtonText: "¡Cerrar!",
-		  closeOnConfirm: false
-		},
-		function(isConfirm){
-				 if (isConfirm) {	   
-				    window.location = rutaOculta;
-				  } 
-		});
+            swal({
+                    title: "Debe ingresar al sistema",
+                    text: "¡Para agregar un producto a la 'lista de deseos' debe primero ingresar al sistema!",
+                    type: "warning",
+                    confirmButtonText: "¡Cerrar!",
+                    closeOnConfirm: false
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+                        window.location = rutaOculta;
+                    }
+                });
 
-	}else{
+        } else {
 
-		$(this).addClass("btn-danger");
+            $(this).addClass("btn-danger");
 
-		var datos = new FormData();
-		datos.append("idUsuario", idUsuario);
-		datos.append("idProducto", idProducto);
+            var datos = new FormData();
+            datos.append("idUsuario", idUsuario);
+            datos.append("idProducto", idProducto);
 
-		$.ajax({
-			url:rutaOculta+"ajax/usuarios.ajax.php",
-			method:"POST",
-			data: datos,
-			cache: false,
-			contentType: false,
-			processData: false,
-			success:function(respuesta){
-				
-							
-			}
+            $.ajax({
+                url: rutaOculta + "ajax/usuarios.ajax.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(respuesta) {
 
-		})
 
-	}
+                }
 
-})
-/*=============================================
-BORRAR PRODUCTO DE LISTA DE DESEOS
-=============================================*/
+            })
 
-$(".quitarDeseo").click(function(){
+        }
 
-	var idDeseo = $(this).attr("idDeseo");
+    })
+    /*=============================================
+    BORRAR PRODUCTO DE LISTA DE DESEOS
+    =============================================*/
 
-	$(this).parent().parent().parent().remove();
+$(".quitarDeseo").click(function() {
 
-	var datos = new FormData();
-	datos.append("idDeseo", idDeseo);
+    var idDeseo = $(this).attr("idDeseo");
 
-	$.ajax({
-			url:rutaOculta+"ajax/usuarios.ajax.php",
-			method:"POST",
-			data: datos,
-			cache: false,
-			contentType: false,
-			processData: false,
-			success:function(respuesta){
-			
-			}
+    $(this).parent().parent().parent().remove();
 
-		});
+    var datos = new FormData();
+    datos.append("idDeseo", idDeseo);
+
+    $.ajax({
+        url: rutaOculta + "ajax/usuarios.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+
+        }
+
+    });
 
 
 })
@@ -417,35 +415,68 @@ $(".quitarDeseo").click(function(){
 ELIMINAR USUARIO
 =============================================*/
 
-$("#eliminarUsuario").click(function(){
+$("#eliminarUsuario").click(function() {
 
-	var id = $("#idUsuario").val();
+    var id = $("#idUsuario").val();
 
-	if($("#modoUsuario").val() == "directo"){
+    if ($("#modoUsuario").val() == "directo") {
 
-		if($("#fotoUsuario").val() != ""){
+        if ($("#fotoUsuario").val() != "") {
 
-			var foto = $("#fotoUsuario").val();
+            var foto = $("#fotoUsuario").val();
 
-		}
+        }
 
-	}
+    }
 
-	swal({
-		  title: "¿Está usted seguro(a) de eliminar su cuenta?",
-		  text: "¡Si borrar esta cuenta ya no se puede recuperar los datos!",
-		  type: "warning",
-		  showCancelButton: true,
-		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "¡Si, borrar cuenta!",
-		  closeOnConfirm: false
-		},
-		function(isConfirm){
-				 if (isConfirm) {	   
-				    window.location = "index.php?ruta=perfil&id="+id+"&foto="+foto;
-				  } 
-		});
+    swal({
+            title: "¿Está usted seguro(a) de eliminar su cuenta?",
+            text: "¡Si borrar esta cuenta ya no se puede recuperar los datos!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "¡Si, borrar cuenta!",
+            closeOnConfirm: false
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+                window.location = "index.php?ruta=perfil&id=" + id + "&foto=" + foto;
+            }
+        });
 
 })
 
 
+
+/*====================================================== OFERTAS ================================================*/
+
+/*=============================================
+CONTADOR DE TIEMPO
+=============================================*/
+
+var finOferta = $(".countdown");
+var fechaFinOferta = [];
+
+for (var i = 0; i < finOferta.length; i++) {
+
+    fechaFinOferta[i] = $(finOferta[i]).attr("finOferta");
+
+    $(finOferta[i]).dsCountDown({
+
+        endDate: new Date(fechaFinOferta[i]),
+
+        theme: 'flat',
+
+        titleDays: 'Días',
+
+        titleHours: 'Horas',
+
+        titleMinutes: 'Minutos',
+
+        titleSeconds: 'Segundos'
+
+
+    });
+
+
+}

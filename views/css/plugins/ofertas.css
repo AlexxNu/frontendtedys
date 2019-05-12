@@ -1,0 +1,96 @@
+/*=============================================
+OFERTAS
+=============================================*/
+
+.ofertas {
+    position: relative;
+    background: linear-gradient(black, #222, silver, white);
+    padding: 0;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.ofertas h3 {
+    padding-top: 20px;
+    color: white;
+}
+
+.ofertas figure {
+    position: relative;
+}
+
+.ofertas h1 {
+    color: white;
+    margin-top: -30px;
+    font-size: 60px;
+    text-shadow: 0px 0px 10px black;
+}
+
+.ofertas .countdown {
+    margin-bottom: 5px;
+}
+
+
+/*=============================================
+BOTONRES COMPARTIR
+=============================================*/
+
+.shared-panel {
+    overflow: auto;
+}
+
+.shared-panel span {
+    font-weight: bold;
+}
+
+.shared {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
+    padding: 0;
+    /* Recurso incluido en la descarga del ejemplo */
+    background: url("shared.png") no-repeat;
+    float: left;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.shared:hover {
+    opacity: 0.7;
+}
+
+.shared.gp {
+    background-position: 0px 0px;
+    background-color: #E62B34;
+}
+
+.shared.tt {
+    background-position: 0px -30px;
+    background-color: #43BDF0;
+}
+
+.shared.ce {
+    background-position: 0px -60px;
+    background-color: #8A898D;
+}
+
+.shared.wa {
+    background-position: 0px -90px;
+    background-color: #0dc143;
+}
+
+.shared.fb {
+    background-position: 0px -120px;
+    background-color: #6081C4;
+    margin-right: 5px;
+}
+
+.st2 {
+    border-radius: 0;
+}
+
+.st3 {
+    border-radius: 5px;
+}

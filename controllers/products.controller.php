@@ -50,4 +50,16 @@ class ControllerProducts{
 
 		return $response;
 	}	
+	/*=============================================
+	ACTUALIZAR VISTA PRODUCTO
+	=============================================*/
+
+	static public function ctrActualizarProducto($item1, $valor1, $item2, $valor2){
+
+		$tabla = "products";
+
+		$respuesta = ModelProducts::mdlActualizarProducto($tabla, $item1, $valor1, $item2, $valor2);
+
+		return $respuesta;
+	}
 }
