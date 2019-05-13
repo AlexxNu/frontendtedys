@@ -70,7 +70,7 @@ $server = Route::ctrRouteServer();
                                      data-endspeed="1000"
                                      style="z-index: 3; max-width: 80px; max-height: 4px; width:100%;height:100%;background:#fff;"></div>';
 
-                                     if($value["boton"] == "SI"){
+                                     if($value["boton"] != ""){
                                 echo '<a href="'.$value["url"].'" class="tp-caption lft skewtoleftshort rs-parallaxlevel-9"
                                    data-x="'.$estiloTextoSlide["data-x"].'"
                                    data-y="360"
@@ -86,7 +86,7 @@ $server = Route::ctrRouteServer();
                                    display:table;
                                    font-weight: bold;
                                    text-transform:uppercase;padding:0 40px;background:#000000;position:relative;z-index:77;">
-                                    Obtener
+                                    '.$value["boton"].'
                                 </a>';
                                 }
                                 else{
@@ -160,7 +160,7 @@ $server = Route::ctrRouteServer();
                                     '.$titulo3["texto1"].'<br>
                                     '.$titulo3["texto2"].'
                                 </div>';
-                               if($value["boton"]=="SI"){
+                               if($value["boton"]!=""){
                                 echo '<a href="'.$value["url"].'" class="tp-caption lft skewtoleftshort rs-parallaxlevel-9"
                                    data-x="'.$estiloTextoSlide["data-x"].'"
                                    data-y="360"
@@ -176,7 +176,7 @@ $server = Route::ctrRouteServer();
                                    display:table;
                                    font-weight: bold;
                                    text-transform:uppercase;padding:0 40px;background:#000000;position:relative;z-index:77;">
-                                    Obtener
+                                    '.$value["boton"].'
                                 </a>';
                                 }
                                 else{
