@@ -6,7 +6,7 @@
                         <li class="active pagActiva" style="text-transform:uppercase; color:#FFCC01;"><?php echo $routes[0]; ?></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
 
             <div class="space10"></div>
 

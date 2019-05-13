@@ -341,7 +341,9 @@ else{
     }
 }
 ?>
-
+</div>
+</div>
+</div>
 <script>
 var pagActiva = $(".pagActiva").html();
     if (pagActiva != null) {
