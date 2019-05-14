@@ -337,10 +337,10 @@ LISTA DE DESEOS
 $(".deseos").click(function() {
 
         var idProducto = $(this).attr("idProducto");
-        console.log("idProducto", idProducto);
+      
 
         var idUsuario = localStorage.getItem("usuario");
-        console.log("idUsuario", idUsuario);
+      
 
         if (idUsuario == null) {
 
@@ -418,6 +418,7 @@ ELIMINAR USUARIO
 $("#eliminarUsuario").click(function() {
 
     var id = $("#idUsuario").val();
+    
 
     if ($("#modoUsuario").val() == "directo") {
 
@@ -429,20 +430,19 @@ $("#eliminarUsuario").click(function() {
 
     }
 
-    swal({
-            title: "¿Está usted seguro(a) de eliminar su cuenta?",
-            text: "¡Si borrar esta cuenta ya no se puede recuperar los datos!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "¡Si, borrar cuenta!",
-            closeOnConfirm: false
-        },
-        function(isConfirm) {
-            if (isConfirm) {
-                window.location = "index.php?ruta=perfil&id=" + id + "&foto=" + foto;
-            }
-        });
+    Swal.fire({
+        title: "¿Está usted seguro(a) de eliminar su cuenta?",
+        text: "¡Si borrar esta cuenta ya no se puede recuperar los datos!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: "¡Si, borrar cuenta!",
+      }).then((result) => {
+        if (result.value) {
+            window.location = "index.php?ruta=perfil&id=" + id + "&foto=" + foto;
+        }
+      })
 
 })
 

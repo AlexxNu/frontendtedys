@@ -244,33 +244,7 @@ class ModeloUsuarios{
 		$stmt = null;
 
 	}
-	/*=============================================
-	ELIMINAR USUARIO
-	=============================================*/
-
-	static public function mdlEliminarUsuario($tabla, $id){
-
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
-
-		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
-
-		if($stmt -> execute()){
-
-			return "ok";
-
-		}else{
-
-			return "error";
-
-		}
-
-		$stmt-> close();
-
-		$stmt = null;
-
-	}
-
-
+	
 	/*=============================================
 	ELIMINAR COMENTARIOS DE USUARIO
 	=============================================*/
@@ -334,6 +308,31 @@ class ModeloUsuarios{
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_usuario = :id_usuario");
 
 		$stmt -> bindParam(":id_usuario", $id, PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt-> close();
+
+		$stmt = null;
+
+	}
+	/*=============================================
+	ELIMINAR USUARIO
+	=============================================*/
+ 
+	static public function mdlEliminarUsuario($tabla, $id){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+
+		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 

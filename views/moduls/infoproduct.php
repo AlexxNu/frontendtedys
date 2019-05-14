@@ -576,45 +576,6 @@ foreach ($comentarios as $key => $value) {
 
 
 <!-- SI SE QUITAN LAS MIGAS DE PAN, QUITAR ESTO-->
-<script>
-var pagActiva = $(".pagActiva").html();
-    if (pagActiva != null) {
-        var regPagActiva = pagActiva.replace(/-/g, " ");
-        $(".pagActiva").html(regPagActiva);
-    }
-    /*=============================================
-ALTURA COMENTARIOS
-=============================================*/
-
-$(".comentarios").css({"height":$(".comentarios .alturaComentarios").height()+"px",
-						"overflow":"hidden",
-						"margin-bottom":"20px"})
-
-$("#verMas").click(function(e){
-
-	e.preventDefault();
-
-	if($("#verMas").html() == "Ver más"){
-
-		$(".comentarios").css({"overflow":"inherit"});
-
-		$("#verMas").html("Ver menos"); 
-	
-	}else{
-
-		$(".comentarios").css({"height":$(".comentarios .alturaComentarios").height()+"px",
-								"overflow":"hidden",
-								"margin-bottom":"20px"})
-
-		$("#verMas").html("Ver más"); 
-	}
-
-})
-
-
-
-   
-</script>
 
 <?php
 

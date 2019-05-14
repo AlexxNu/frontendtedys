@@ -166,7 +166,7 @@ $(".agregarCarrito").click(function() {
         var precio = $(this).attr("precio");
         var peso = $(this).attr("peso");
         rutaOculta = $("#rutaOculta").val();
-        console.log(rutaOculta);
+        
         var agregarAlCarrito = true;
 
         /*=============================================
@@ -216,7 +216,7 @@ $(".agregarCarrito").click(function() {
                 "cantidad": "1"
             });
 
-            console.log("listaCarrito", listaCarrito);
+           
 
             localStorage.setItem("listaProductos", JSON.stringify(listaCarrito));
 
@@ -234,21 +234,20 @@ $(".agregarCarrito").click(function() {
             MOSTRAR ALERTA DE QUE EL PRODUCTO YA FUE AGREGADO
             =============================================*/
 
-            swal({
-                    title: "",
-                    text: "¡Se ha agregado un nuevo producto al carrito de compras!",
-                    type: "success",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "¡Continuar comprando!",
-                    confirmButtonText: "¡Ir a mi carrito de compras!",
-                    closeOnConfirm: false
-                },
-                function(isConfirm) {
-                    if (isConfirm) {
-                        window.location = rutaOculta + "carrito-de-compras";
-                    }
-                });
+            Swal.fire({
+                title: "",
+                text: "¡Se ha agregado un nuevo producto al carrito de compras!",
+                type: "success",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#37A82D',
+                cancelButtonText: "¡Continuar comprando!",
+                confirmButtonText: "¡Ir a mi carrito de compras!"
+              }).then((result) => {
+                if (result.value) {
+                    window.location = rutaOculta + "carrito-de-compras";
+                }
+              })
         }
 
 
@@ -493,7 +492,7 @@ $("#btnCheckout").click(function() {
         for (var i = 0; i < titulo.length; i++) {
 
             var pesoArray = $(peso[i]).attr("peso");
-            console.log("pesoArray", pesoArray);
+            
             var tituloArray = $(titulo[i]).html();
             var cantidadArray = $(cantidad[i]).val();
             var subtotalArray = $(subtotal[i]).html();

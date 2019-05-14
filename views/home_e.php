@@ -154,7 +154,7 @@
         
         <script src="<?php echo $url;?>views/js/main.js"></script>
         <script src="<?php echo $url;?>views/js/buscador.js"></script>
-        <script src="<?php echo $url;?>views/js/plugins/home_e.js"></script>
+
         <script src="<?php echo $url;?>views/js/plugins/sweetalert2.min.js"></script>
         <script src="<?php echo $url;?>views/js/plugins/md5-min.js"></script>
         <script src="<?php echo $url;?>views/js/plugins/dscountdown.min.js"></script>
@@ -221,6 +221,7 @@
         <script src="<?php echo $url;?>views/js/ajax/usuarios.js"></script>
         <script src="<?php echo $url;?>views/js/ajax/registroFacebook.js"></script>
         <script src="<?php echo $url;?>views/js/ajax/carrito-de-compras.js"></script>
+        <script src="<?php echo $url;?>views/js/ajax/infoproducto.js"></script>
         <script>
   window.fbAsyncInit = function() {
     FB.init({

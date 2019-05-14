@@ -170,7 +170,7 @@ if($cliente->getAccessToken()){
                     <p class="no-margin top-welcome">Bienvenido a Tedys Toys</p>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <a class="navbar-brand" href="<?php echo $url;?>"><img src="<?php echo $server;?>views/images/basic/logo.png" class="img-responsive" alt=""/></a>
+                    <a class="navbar-brand" href="<?php echo $url;?>"><img src="<?php echo $url;?>views/images/basic/marca.png" class="img-responsive" alt=""/></a>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="topcart pull-right">

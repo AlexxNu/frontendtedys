@@ -842,10 +842,10 @@ class ControladorUsuarios{
 
 		if(isset($_GET["id"])){
 
-			$tabla1 = "usuarios";		
-			$tabla2 = "comentarios";
-			$tabla3 = "compras";
-			$tabla4 = "deseos";
+			$tabla4 = "usuarios";		
+			$tabla3 = "comentarios";
+			$tabla2 = "compras";
+			$tabla1 = "deseos";
 
 			$id = $_GET["id"];
 
@@ -856,13 +856,13 @@ class ControladorUsuarios{
 
 			}
 
-			$respuesta = ModeloUsuarios::mdlEliminarUsuario($tabla1, $id);
+			$respuesta = ModeloUsuarios::mdlEliminarComentarios($tabla3, $id);
+
+			ModeloUsuarios::mdlEliminarCompras($tabla2, $id);
+
+			ModeloUsuarios::mdlEliminarListaDeseos($tabla1, $id);
 			
-			ModeloUsuarios::mdlEliminarComentarios($tabla2, $id);
-
-			ModeloUsuarios::mdlEliminarCompras($tabla3, $id);
-
-			ModeloUsuarios::mdlEliminarListaDeseos($tabla4, $id);
+			ModeloUsuarios::mdlEliminarUsuario($tabla4, $id);
 
 			if($respuesta == "ok"){
 
@@ -870,19 +870,18 @@ class ControladorUsuarios{
 
 		    	echo'<script>
 
-						swal({
-							  title: "¡SU CUENTA HA SIDO BORRADA!",
-							  text: "¡Debe registrarse nuevamente si desea ingresar!",
-							  type: "success",
-							  confirmButtonText: "Cerrar",
-							  closeOnConfirm: false
-						},
-
-						function(isConfirm){
-								 if (isConfirm) {	   
-								   window.location = "'.$url.'salir";
-								  } 
-						});
+					Swal.fire({
+						title: "¡SU CUENTA HA SIDO BORRADA!",
+                text: "¡Debe registrarse nuevamente si desea ingresar!",
+                type: "success",
+                confirmButtonText: "Cerrar",
+						confirmButtonColor: "#3085d6",
+						confirmButtonText: "Cerrar"
+					}).then((result) => {
+						if (result.value) {
+							window.location = "'.$url.'salir";
+						}
+					})
 
 					  </script>';
 
