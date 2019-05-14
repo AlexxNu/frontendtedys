@@ -33,9 +33,9 @@ PRODUCT BAR
 
 </div>
 
-		<!--=====================================
-		PRODUCT LIST
-		======================================-->
+<!--=====================================
+BREADCRUMB BUSCADOR
+======================================-->
 
 <div class="container-fluid productos">
 	
@@ -47,21 +47,18 @@ PRODUCT BAR
 			BREADCRUMP O MIGAS DE PAN
 			======================================-->
 
+            <br>
+			<div class="bcrumbs">
+                <div class="container">
+                    <ul>
+                        <li><a href="<?php echo $url; ?>">INICIO</a></li>
+                        <li class="active pagActiva" style="text-transform:uppercase; color:#FFCC01;"><?php echo $routes[0]; ?></li>
+                    </ul>
+                </div>
+			</div>
             
-			<div class="pagenav-wrap">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                    <ul class="breadcrumb fondoBreadcrumb">
-
-<li><a href="<?php echo $url; ?>">INICIO</li></a>
-<li class="active pagActiva"><?php echo $routes[0]; ?></li>
-</ul> 
-                                    </div>
-                                    
-
-                                   
-                                </div>
-                            </div>
+            
+            
 			
 <?php 
 //LLAMADO DE PAGINACION

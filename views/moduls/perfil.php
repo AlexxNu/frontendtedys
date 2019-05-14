@@ -18,14 +18,35 @@ if(!isset($_SESSION["validarSesion"])){
 
 ?>
 
-<div class="bcrumbs">
+<!--=====================================
+BREADCRUMB PERFIL
+======================================-->
+
+<div class="container-fluid productos">
+	
+	<div class="container">
+		
+		<div class="row">
+            
+            <!--=====================================
+			BREADCRUMP O MIGAS DE PAN
+			======================================-->
+
+            <br>
+			<div class="bcrumbs">
                 <div class="container">
                     <ul>
                         <li><a href="<?php echo $url; ?>">INICIO</a></li>
                         <li class="active pagActiva" style="text-transform:uppercase; color:#FFCC01;"><?php echo $routes[0]; ?></li>
                     </ul>
                 </div>
+			</div>
             </div>
+						</div>
+						
+            </div>
+
+            
 
 <!--=====================================
 SECCIÓN PERFIL
@@ -378,7 +399,8 @@ SECCIÓN PERFIL
 	
 								foreach ($productos as $key => $value2) {
 								
-								echo '<li class="col-md-3 col-sm-6 col-xs-12">
+								echo '
+								<li class="col-md-3 col-sm-6 col-xs-12">
 	
 										<figure>
 											
@@ -695,8 +717,9 @@ SECCIÓN PERFIL
 	</div>
 
 </div>
-
+<br>
 </div>
+
 
 <!--=====================================
 VENTANA MODAL PARA COMENTARIOS

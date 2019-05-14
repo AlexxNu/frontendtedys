@@ -2371,6 +2371,9 @@ footer {
 #header2 .nav>li>a {
     padding: 20px 0;
 }
+#header2 .nav>li>a.enlacebuscador {
+    padding: 0px 0;
+}
 
 #header2 .navbar-nav>li {
     float: left;

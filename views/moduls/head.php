@@ -92,76 +92,121 @@ if($cliente->getAccessToken()){
 
 <div class="body">
 
-    <!-- TOPBAR -->
-    <div class="top_bar">
-        <div class="container">
-            <div class="row">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="tb_center pull-left">
-                            <ul>
-                                <li><i class="fa fa-phone"></i> Hotline: <a href="#">(+800) 2307 2509 8988</a></li>
-                                <li><i class="fa fa-envelope-o"></i> <a href="#">online support@smile.com</a></li>
-                            </ul>
-                        </div>
-                        <div class="tb_right pull-right">
-                            <ul>
-                                <li>
-                                    <div class="tbr-info">
+    <!--=====================================
+TOP
+======================================-->
 
-                                    <?php 
-                                    
-                                    if(isset($_SESSION["validarSesion"])){
-                                        if($_SESSION["validarSesion"] == "ok"){
-                                            if($_SESSION["modo"] == "directo"){
-                                                if($_SESSION["foto"] != ""){
-                                                    echo '
-										            <img class="img-circle" src="'.$url.$_SESSION["foto"].'" width="10%">
-									                ';
-                                                }else{
-                                                    echo '
-									                <img class="img-circle" src="'.$server.'views/images/usuarios/default/anonymous.png" width="10%">
-								                    ';
-                                                }
-                                                echo '<a href="'.$url.'perfil">Ver Perfil</a> |
-							                          <a href="'.$url.'salir">Salir</a>';
-                                                
-                                            }
-                                            if($_SESSION["modo"] == "facebook"){
-                                                echo '
-									                <img class="img-circle" src="'.$_SESSION["foto"].'" width="10%">
-                                                    <a href="'.$url.'perfil">Ver Perfil</a> |
-							                          <a href="'.$url.'salir" class="salir">Salir</a>';
-                                            }
-                                            if($_SESSION["modo"] == "google"){
-                                                echo '
-									                <img class="img-circle" src="'.$_SESSION["foto"].'" width="10%">
-                                                    <a href="'.$url.'perfil">Ver Perfil</a> |
-							                          <a href="'.$url.'salir">Salir</a>';
-                                            }
-                                            
-                                        }
-                                    }else{
+<div class="container-fluid barraSuperior" id="top">
+	
+	<div class="container">
+		
+		<div class="row">
+	
+			<!--=====================================
+			SOCIAL
+			======================================-->
 
-                                        echo '<a href="#modalIngreso" data-toggle="modal">Ingresar</a> |
-                                        <a href="#modalRegistro" data-toggle="modal">Registrarse</a>';
-                    
-                                    }
-                                    ?>
-                                        
-                                            
-                                       
-                                    </div>
-                                </li>
-                               
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 social">
+				
+				<ul>	
+                <li><i class="fa fa-phone"></i> Telefono: <a href="#">(+800) 2307 2509 8988</a></li> |
+                                <li><i class="fa fa-envelope-o"></i> <a href="#">contacto@tedystoys.com</a></li>
 
+				</ul>
+
+			</div>
+
+			<!--=====================================
+			REGISTRO
+			======================================-->
+
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 registro">
+				
+				<ul>
+
+				<?php
+
+				if(isset($_SESSION["validarSesion"])){
+
+					if($_SESSION["validarSesion"] == "ok"){
+
+						if($_SESSION["modo"] == "directo"){
+
+							if($_SESSION["foto"] != ""){
+
+								echo '<li>
+
+										<img class="img-circle" src="'.$url.$_SESSION["foto"].'" width="10%">
+
+									 </li>';
+
+							}else{
+
+								echo '<li>
+
+									<img class="img-circle" src="'.$server.'views/images/usuarios/default/anonymous.png" width="10%">
+
+								</li>';
+
+							}
+
+							echo '<li>|</li>
+							 <li><a href="'.$url.'perfil">Ver Perfil</a></li>
+							 <li>|</li>
+							 <li><a href="'.$url.'salir">Salir</a></li>';
+
+
+						}
+
+						if($_SESSION["modo"] == "facebook"){
+
+							echo '<li>
+
+									<img class="img-circle" src="'.$_SESSION["foto"].'" width="10%">
+
+								   </li>
+								   <li>|</li>
+						 		   <li><a href="'.$url.'perfil">Ver Perfil</a></li>
+						 		   <li>|</li>
+						 		   <li><a href="'.$url.'salir" class="salir">Salir</a></li>';
+
+						}
+
+						if($_SESSION["modo"] == "google"){
+
+							echo '<li>
+
+									<img class="img-circle" src="'.$_SESSION["foto"].'" width="10%">
+
+								   </li>
+								   <li>|</li>
+						 		   <li><a href="'.$url.'perfil">Ver Perfil</a></li>
+						 		   <li>|</li>
+						 		   <li><a href="'.$url.'salir">Salir</a></li>';
+
+						}
+
+					}
+
+				}else{
+
+					echo '<li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
+						  <li>|</li>
+						  <li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>';
+
+				}
+
+				?>
+	
+				</ul>
+
+			</div>	
+
+		</div>	
+
+	</div>
+
+</div>
     <!-- HEADER -->
     <header id="header2">
         <div class="container">
@@ -185,10 +230,11 @@ if($cliente->getAccessToken()){
                     <div class="top-search2 pull-right" id="buscador">
                         
                             <input type="text" placeholder="Buscar...">
-                            						<a href="<?php echo $url; ?>buscador/1/recientes">
+                            						<a class="enlacebuscador" href="<?php echo $url; ?>buscador/1/recientes">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         
                     </div>
+                    
                     <nav class="navbar navbar-default">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -203,14 +249,8 @@ if($cliente->getAccessToken()){
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown">
-                                    <a href="./index.html" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Home</a>
-                                    <ul class="dropdown-menu submenu" role="menu">
-                                        <li><a href="./index.html">Home - Style 1</a>
-                                        <li><a href="./index2.html">Home - Style 2</a>
-                                        <li><a href="./index3.html">Home - Style 3</a>
-                                        <li><a href="./index4.html">Home - Style 4</a>
-                                        <li><a href="./index5.html">Home - Style 5</a>
-                                    </ul>
+                                    <a href="<?php echo $url;?>">Inicio</a>
+                                                                        
                                 </li>
                                 <li class="dropdown mmenu">
                                     <a href="./categories-grid.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias</a>
@@ -238,18 +278,7 @@ echo '<li>
 
                                 </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="./categories-grid.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shop</a>
-                                    <ul class="dropdown-menu submenu" role="menu">
-                                        <li><a href="./categories-grid.html">Shop - Grid 1</a>
-                                        <li><a href="./categories-list.html">Shop - Grid 2</a>
-                                        <li><a href="./single-product.html">Shop - Single</a></li>
-                                        <li><a href="./shoppingcart.html">Shopping Cart</a></li>
-                                        <li><a href="./checkout.html">Checkout 1</a></li>
-                                        <li><a href="./checkout-2.html">Checkout 2</a></li>
-                                        <li><a href="./checkout-2-leftside.html">Checkout Left Sidebar</a></li>
-                                    </ul>
-                                </li>
+                                
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog</a>
                                     <ul class="dropdown-menu submenu" role="menu">
@@ -293,7 +322,6 @@ echo '<li>
                                     ?>
                                    
                                    
-                                    </ul>
                                 </li>
                             </ul>
                         </div>

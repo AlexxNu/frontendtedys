@@ -1,0 +1,27 @@
+/*=============================================
+TOP
+=============================================*/
+.barraSuperior{
+    background-color:#292929;
+    height:45px;
+}
+#top ul{
+	padding-top:8px;
+}
+
+#top ul li{
+	display:inline;
+	line-height:30px;
+	margin:0px 5px;
+	color:white;
+}
+
+.social ul li a i{
+	font-size:18px;
+	margin:0 1px;
+}
+
+.registro ul{
+	text-align: right;
+	font-size:12px;
+}

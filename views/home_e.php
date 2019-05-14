@@ -114,6 +114,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/sweetalert2.min.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/perfil.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/ofertas.css">
+        <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/header.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/dscountdown.css">
 
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/carrito-de-compras.css">
@@ -162,7 +163,7 @@
         
         
     </head>
-    <body id="home4">
+    <body id="home2" class="header2">
 
     <input type="hidden" value="<?php echo $url;?>" id="rutaOculta">
 

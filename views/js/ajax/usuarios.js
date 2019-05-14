@@ -1,3 +1,4 @@
+
 //CAPTURA DE RUTA
 var rutaActual = location.href;
 

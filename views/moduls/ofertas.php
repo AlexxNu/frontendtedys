@@ -7,24 +7,30 @@ $server = Route::ctrRouteServer();
 <!--=====================================
 BREADCRUMB OFERTAS
 ======================================-->
-<div class="container-fluid well well-sm">
+
+<div class="container-fluid productos">
 	
 	<div class="container">
 		
 		<div class="row">
-			
-			<ul class="breadcrumb fondoBreadcrumb text-uppercase">
-				
-				<li><a href="<?php echo $url;  ?>">INICIO</a></li>
-				<li class="active pagActiva"><?php echo $routes[0] ?></li>
+            
+            <!--=====================================
+			BREADCRUMP O MIGAS DE PAN
+			======================================-->
 
-			</ul>
-
-		</div>
-
-	</div>
-
-</div>
+            <br>
+			<div class="bcrumbs">
+                <div class="container">
+                    <ul>
+                        <li><a href="<?php echo $url; ?>">INICIO</a></li>
+                        <li class="active pagActiva" style="text-transform:uppercase; color:#FFCC01;"><?php echo $routes[0]; ?></li>
+                    </ul>
+                </div>
+			</div>
+            </div>
+            </div>
+            </div>
+            
 
 <div class="container-fluid">
 
