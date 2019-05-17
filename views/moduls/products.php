@@ -1,30 +1,119 @@
-<?php 
+<!--=====================================
+BANNER
+======================================-->
+
+<?php
+
 $url = Route::ctrRoute();
 $server = Route::ctrRouteServer();
-?>
-<!--=====================================
-BANNER PROMOCIONAL
-======================================-->
-<div class="testimonial parallax-bg2">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                                <div>
-                                    <img src="images/quote/3.png" class="img-responsive" alt=""/>
-                                    <div class="quote-info">
-                                        <h4>Smile Nguyen</h4>
-                                        <cite>Themeforest</cite>	
-                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis odio in faucibus posuere. In eu scelerisque lorem. Mauris lusto in lacus accumsan interdum.Nam mattis sollicitudin vestibulum"</p>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-</div>
-<!--=====================================
-PRODUCT BAR
-======================================-->
+
+$ruta = $routes[0];
+
+$banner = ControllerProducts::ctrMostrarBanner($ruta);
+
+date_default_timezone_set('America/Bogota');
+
+$fecha = date('Y-m-d');
+$hora = date('H:i:s');
+
+$fechaActual = $fecha.' '.$hora;
+
+if($banner != null){
+
+	if($banner["estado"] != 0){
+
+		echo '<figure class="banner">
+
+				<img src="'.$server.$banner["img"].'" class="img-responsive" width="100%">';	
+
+				if($banner["ruta"] != "sin-categoria"){
+
+					/*=============================================
+					BANNER PARA CATEGORÍAS
+					=============================================*/
+
+					if($banner["tipo"] == "categorias"){
+
+						$item = "ruta";
+						$valor = $banner["ruta"];
+
+						$ofertas = ControllerProducts::ctrMostrarCategorias($item, $valor);
+
+						if($ofertas["oferta"] == 1){
+
+							echo '<div class="textoBanner textoIzq">
+
+								<h1 style="color:#fff" class="text-uppercase">'.$ofertas["categoria"].'</h1>
+
+							</div>
+
+							<div class="textoBanner textoDer">
+							
+								<h1 style="color:#fff">OFERTAS ESPECIALES</h1>';
+
+								if($ofertas["precioOferta"] != 0){
+									
+									echo '<h2 style="color:#fff"><strong>Todos los productos a $ '.$ofertas["precioOferta"].'</strong></h2>';
+
+								}
+
+								if($ofertas["descuentoOferta"] != 0){
+								
+									echo '<h2 style="color:#fff"><strong>Todos los productos con '.$ofertas["descuentoOferta"].'% OFF</strong></h2>';
+								}
+
+							echo '<h3 class="col-md-0 col-sm-0 col-xs-0" style="color:#fff">
+								
+								La oferta termina en<br>
+
+								<div class="countdown2" finOferta="'.$ofertas["finOferta"].'">
+
+
+							</h3>';
+
+							$datetime1 = new DateTime($ofertas["finOferta"]);
+							$datetime2 = new DateTime($fechaActual);
+
+							$interval = date_diff($datetime1, $datetime2);
+
+							$finOferta = $interval->format('%a');
+
+							if($finOferta == 0){
+
+								echo '<h3 class="col-lg-0" style="color:#fff">La oferta termina hoy</h3>';
+
+							}else if($finOferta == 1){
+		
+								echo '<h3 class="col-lg-0" style="color:#fff">La oferta termina en '.$finOferta.' día</h3>';
+		
+							}else{
+		
+								echo '<h3 class="col-lg-0" style="color:#fff">La oferta termina en '.$finOferta.' días</h3>';
+		
+							}
+
+
+							echo '</div>';
+
+						}
+
+					}
+
+				
+
+
+
+				}
+
+		echo '</figure>';
+
+	}
+
+}
+
+?>
+
 <div class="container-fluid well well-sm barraProductos">
 
 <div class="container">

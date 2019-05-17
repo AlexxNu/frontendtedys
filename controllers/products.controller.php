@@ -34,6 +34,21 @@ class ControllerProducts{
 
 		return $response;
 	}
+
+		/*=============================================
+	MOSTRAR BANNER
+	=============================================*/
+
+	static public function ctrMostrarBanner($ruta){
+
+		$tabla = "banner";
+
+		$respuesta = ModelProducts::mdlMostrarBanner($tabla, $ruta);
+
+		return $respuesta;
+
+	}
+
 	//BUSCADOR
 	static public function ctrBuscarProductos($busqueda,$base,$tope,$ordenar,$modo){
 		$table = "products";

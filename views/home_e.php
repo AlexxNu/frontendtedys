@@ -115,6 +115,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/perfil.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/ofertas.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/slide.css">
+       
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/header.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/dscountdown.css">
 
