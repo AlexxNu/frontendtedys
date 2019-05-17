@@ -114,6 +114,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/sweetalert2.min.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/perfil.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/ofertas.css">
+        <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/slide.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/header.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/dscountdown.css">
 
@@ -223,6 +224,7 @@
         <script src="<?php echo $url;?>views/js/ajax/registroFacebook.js"></script>
         <script src="<?php echo $url;?>views/js/ajax/carrito-de-compras.js"></script>
         <script src="<?php echo $url;?>views/js/ajax/infoproducto.js"></script>
+        <script src="<?php echo $url;?>views/js/ajax/slide.js"></script>
         <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -244,22 +246,6 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-
-   /*=============================================
-	COMPARTIR EN FACEBOOK
-	https://developers.facebook.com/docs/      
-	=============================================*/
-	
-	$(".shared.fb").click(function(){
-
-FB.ui({
-
-    method: 'share',
-    display: 'popup',
-    href: '<?php  echo $url.$cabeceras["ruta"];  ?>',
-}, function(response){});
-
-})
 
 </script>
 

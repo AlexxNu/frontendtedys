@@ -469,23 +469,19 @@ class ControladorUsuarios{
 
 			if($respuesta0["modo"] != $datos["modo"]){
 
-				echo '<script> 
-
-						swal({
-							  title: "¡ERROR!",
-							  text: "¡El correo electrónico '.$datos["email"].', ya está registrado en el sistema con un método diferente a Google!",
-							  type:"error",
-							  confirmButtonText: "Cerrar",
-							  closeOnConfirm: false
-							},
-
-							function(isConfirm){
-
-								if(isConfirm){
-									history.back();
-								}
-						});
-
+				echo '
+				<script> 
+				Swal.fire({
+					title: "¡ERROR!",
+					text: "¡El correo electrónico '.$datos["email"].', ya está registrado en el sistema con un método diferente a Google!",
+					type: "warning",
+					confirmButtonColor: "#3085d6",
+					confirmButtonText: "Cerrar"
+				}).then((result) => {
+					if (result.value) {
+						history.back();
+					}
+				})
 				</script>';
 
 				$emailRepetido = false;

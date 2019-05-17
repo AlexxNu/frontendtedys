@@ -157,7 +157,8 @@ header {
 
 .navbar-brand>img {
     display: block;
-    height: 31px;
+    height: 50px;
+    width:100px;
     transition: .4s;
 }
 
