@@ -35,6 +35,7 @@ class AjaxUsuarios{
 					   "foto"=>$this->foto,
 					   "password"=>"null",
 					   "modo"=>"facebook",
+					   "tipo"=>"Minorista",
 					   "verificacion"=>0,
 					   "emailEncriptado"=>"null");
 

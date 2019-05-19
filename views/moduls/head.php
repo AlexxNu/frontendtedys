@@ -67,7 +67,8 @@ if($cliente->getAccessToken()){
 				   "email"=>$item["email"],
 				   "foto"=>$item["picture"],
 				   "password"=>"null",
-				   "modo"=>"google",
+                   "modo"=>"google",
+                   "tipo"=>"Minorista",
 				   "verificacion"=>0,
 				   "emailEncriptado"=>"null");
 
@@ -412,6 +413,13 @@ echo '<li>
     
                         </div>
     
+                    </div>
+                    <div class="form-group">
+                    <label for="tipousuario">Tipo de cliente</label>
+                    <select name="tipousuario" id="tipousuario" class="form-control">
+                    <option value="Minorista">Minorista</option>
+                    <option value="Mayorista">Mayorista</option>
+                    </select>
                     </div>
                     <div class="checkBox">
                         <label>

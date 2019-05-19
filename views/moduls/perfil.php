@@ -72,6 +72,10 @@ SECCIÓN PERFIL
 	  			<a data-toggle="tab" href="#perfil">
 	  			<i class="fa fa-user"></i> EDITAR PERFIL</a>
 	  		</li>
+				<li>				
+	  			<a data-toggle="tab" href="#facturas">
+	  			<i class="fa fa-book"></i> MIS FACTURAS</a>
+	  		</li>
 
 	  		<li>				
 		 	 	<a href="<?php echo $url; ?>ofertas">
@@ -532,6 +536,59 @@ SECCIÓN PERFIL
 	
 	
 				  </div>
+
+			<!--=====================================
+			PESTAÑA FACTURAS
+			======================================-->
+
+			<div id="facturas" class="tab-pane fade">
+		    
+			<?php
+
+$item = "id_usuario";
+$valor = $_SESSION["id"];
+
+$facturas = ControladorFacturas::ctrMostrarFacturas($item, $valor);
+
+if(!$facturas){
+
+	echo '<div class="col-xs-12 text-center error404">
+			 
+		<h1><small>¡Oops!</small></h1>
+
+		<h2>Aún no tienes facturas de tus compras realizadas.</h2>
+
+		</div>';
+
+}else{
+	echo '<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Fecha</th>
+			<th scope="col">Visualizar</th>
+		</tr>
+	</thead>';
+	foreach ($facturas as $key => $value) {
+		echo '
+		<tbody>
+			<tr>
+				<th scope="row">'.substr($value["fecha"],0,-8).'</th>
+				<td>
+				<a href="'.$server.$value["factura"].'" target="_blank">
+				<button type="button" class="btn btn-default btn-md" data-toggle="tooltip" title="Ver factura">
+
+				<i class="fa fa-eye" aria-hidden="true"></i>
+
+			</button>	
+			</a></td>
+			</tr>
+		</tbody>';
+	}
+	echo '</table>';
+	
+}
+	?>
+						</div>
 
 		  
 
