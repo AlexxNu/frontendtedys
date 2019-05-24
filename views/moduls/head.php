@@ -280,41 +280,19 @@ echo '<li>
                                 </li>
                                 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu submenu" role="menu">
-                                        <li><a href="./blog.html">Blog Posts</a>
-                                        <li><a href="./blog-single.html">Blog Single</a>
-                                    </ul>
+                                <?php 
+                                    echo ' <a href="'.$url.'blog">BLOG</a>';
+                                    ?>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Get inspired</a>
-                                    <ul class="dropdown-menu submenu" role="menu">
-                                        <li><a href="#">Nam ipsum est</a>
-                                        <li><a href="#">Volutpat</a>
-                                        <li><a href="#">In efficitur in</a></li>
-                                        <li><a href="#">Accumsan eget</a></li>
-                                        <li><a href="#">Odio</a></li>
-                                        <li><a href="#">Curabitur</a></li>
-                                        <li><a href="#">Phasellus</a></li>
-                                        <li><a href="#">Dapibus elit</a></li>
-                                        <li><a href="#">Nurna ullamcorper</a></li>
-                                        <li><a href="#">Lobortis</a></li>
-                                    </ul>
+                                <?php 
+                                    echo ' <a href="'.$url.'nosotros">NOSOTROS</a>';
+                                    ?>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Technology</a>
-                                    <ul class="dropdown-menu submenu" role="menu">
-                                        <li><a href="#">Nam ipsum est</a>
-                                        <li><a href="#">Volutpat</a>
-                                        <li><a href="#">In efficitur in</a></li>
-                                        <li><a href="#">Accumsan eget</a></li>
-                                        <li><a href="#">Odio</a></li>
-                                        <li><a href="#">Curabitur</a></li>
-                                        <li><a href="#">Phasellus</a></li>
-                                        <li><a href="#">Dapibus elit</a></li>
-                                        <li><a href="#">Nurna ullamcorper</a></li>
-                                        <li><a href="#">Lobortis</a></li>
-                                    </ul>
+                                <?php 
+                                    echo ' <a href="'.$url.'comprometidos">COMPROMETIDOS</a>';
+                                    ?>
                                 </li>
                                 <li class="dropdown">
                                     <?php 

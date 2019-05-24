@@ -99,13 +99,13 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:400,100,300,300italic,700,900' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="<?php echo $url;?>views/css/font-awesome/css/font-awesome.css">
+             <!-- CSS -->
+             <link rel="stylesheet" href="<?php echo $url;?>views/css/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/isotope/isotope.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/slick/slick.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/rs-plugin/css/settings.css">
-        
+        <link rel="stylesheet" href="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/subscribe-better.css">
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/plugin/owl-carousel/owl.carousel.css">
@@ -117,6 +117,7 @@
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/slide.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/header.css">
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/dscountdown.css">
+        <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/flexslider.css">
 
         <link rel="stylesheet" href="<?php echo $url;?>views/css/plugins/carrito-de-compras.css">
         <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
@@ -142,7 +143,7 @@
                                             }
         </script>
 
-        <script src="<?php echo $url;?>views/js/bootstrap.min.js"></script>
+         <script src="<?php echo $url;?>views/js/bootstrap.min.js"></script>
         <script src="<?php echo $url;?>views/plugin/owl-carousel/owl.carousel.min.js"></script>
         <script src="<?php echo $url;?>views/js/bs-navbar.js"></script>
         <script src="<?php echo $url;?>views/js/vendors/isotope/isotope.pkgd.js"></script>
@@ -153,13 +154,15 @@
         <script src="<?php echo $url;?>views/js/jquery.sticky.js"></script>
         <script src="<?php echo $url;?>views/js/jquery.subscribe-better.js"></script>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        
+        <script src="<?php echo $url;?>views/js/vendors/select/jquery.selectBoxIt.min.js"></script>
         <script src="<?php echo $url;?>views/js/main.js"></script>
         <script src="<?php echo $url;?>views/js/buscador.js"></script>
 
         <script src="<?php echo $url;?>views/js/plugins/sweetalert2.min.js"></script>
         <script src="<?php echo $url;?>views/js/plugins/md5-min.js"></script>
         <script src="<?php echo $url;?>views/js/plugins/dscountdown.min.js"></script>
+        <script src="<?php echo $url;?>views/js/plugins/jquery.flexslider.js"></script>
+
 
         
         

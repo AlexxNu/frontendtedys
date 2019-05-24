@@ -172,9 +172,11 @@ echo '<div class="col-md-3 col-sm-4 clear-box">
              echo '<span class="badge offer">-'.$value["descuentoOferta"].'%</span>';
          }
     
-            echo '<img src="'.$server.$value["portada"].'" class="img-responsive" alt=""/>
-            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
-            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
+            echo '<a href="'.$url.$value["ruta"].'" class="pixelProducto">
+            <img src="'.$server.$value["portada"].'" class="img-responsive" alt=""/>
+            <div class="overlay-rmore fa fa-plus quickview"></div>
+            <div class="overlay-rmore fa fa-plus quickview"></div>
+            </a>
             <div class="product-overlay">
             <button type="button" class="addcart agregarCarrito"  idProducto="'.$value["id_product"].'" imagen="'.$server.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" peso="'.$value["peso"].'" data-toggle="tooltip"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
 

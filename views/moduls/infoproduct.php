@@ -27,6 +27,7 @@ BREADCRUMB INFO PRODUCTO
 
             <div class="space10"></div>
 
+           
             <?php 
             $item= "ruta";
             $value= $routes[0];
@@ -81,25 +82,22 @@ BREADCRUMB INFO PRODUCTO
                                             //PRECIO DEL PRODUCTO
                                             echo '<h3>'.$infoproducto["titulo"].'</h3>
                                             <span class="label label-warning">NUEVO</span>"
-                                            <div class="ps-price">$ '.$infoproducto["precioOferta"].'</div>';
+                                            <div class="ps-price"> $'.$infoproducto["precioOferta"].'</div>';
                                         }
                                         }else{
                                             if($infoproducto["nuevo"]==0){
                                             echo '<span class="badge offer">-'.$infoproducto["descuentoOferta"].'%</span>
                                             <h3>'.$infoproducto["titulo"].'</h3><br>
-                                            <div class="ps-price"><span>$ '.$infoproducto["precio"].'</span> $ '.$infoproducto["precioOferta"].'</div>';
+                                            <div class="ps-price"><span>$'.$infoproducto["precio"].'</span> $'.$infoproducto["precioOferta"].'</div>';
                                         }else{
                                             echo '<span class="badge offer">-'.$infoproducto["descuentoOferta"].'%</span>
                                             <h3>'.$infoproducto["titulo"].'</h3>
                                             <span class="label label-warning">NUEVO</span>"
-                                            <div class="ps-price"><span>$ '.$infoproducto["precio"].'</span> $ '.$infoproducto["precioOferta"].'</div>';
+                                            <div class="ps-price"><span>$'.$infoproducto["precio"].'</span> $'.$infoproducto["precioOferta"].'</div>';
                                               
                                         }
                                     }
-                                            
-                                     
-
-                                        //DESCRIPCION DEL PRODUCTO  
+                                                                                //DESCRIPCION DEL PRODUCTO  
                                           
                                         echo ' </div>
                                         <p>'.$infoproducto["descripcion"].'</p>

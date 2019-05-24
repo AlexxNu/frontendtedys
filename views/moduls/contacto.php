@@ -1,26 +1,32 @@
 
-            <!--=====================================
-BREADCRUMB CARRITO DE COMPRAS
+<!--=====================================
+BREADCRUMB PERFIL
 ======================================-->
 
-<div class="container-fluid well well-sm">
+<div class="container-fluid productos">
 	
 	<div class="container">
 		
 		<div class="row">
-			
-			<ul class="breadcrumb fondoBreadcrumb text-uppercase">
-				
-				<li><a href="<?php echo $url;  ?>">INICIO</a></li>
-				<li class="active pagActiva"><?php echo $routes[0] ?></li>
+            
+            <!--=====================================
+			BREADCRUMP O MIGAS DE PAN
+			======================================-->
 
-			</ul>
+            <br>
+			<div class="bcrumbs">
+                <div class="container">
+                    <ul>
+                        <li><a href="<?php echo $url; ?>">INICIO</a></li>
+                        <li class="active pagActiva" style="text-transform:uppercase; color:#FFCC01;"><?php echo $routes[0]; ?></li>
+                    </ul>
+                </div>
+			</div>
+            </div>
+						</div>
+						
+            </div>
 
-		</div>
-
-	</div>
-
-</div>
 
             <div class="space10"></div>
 
@@ -43,15 +49,15 @@ BREADCRUMB CARRITO DE COMPRAS
                                     <div class="media">
                                         <i class="pull-left fa fa-phone"></i>
                                         <div class="media-body">
-                                            <strong>Telephone:</strong><br>
+                                            <strong>Telefono:</strong><br>
                                             (012) 345-7689
                                         </div>
                                     </div>
                                     <div class="media">
                                         <i class="pull-left fa fa-envelope-o"></i>
                                         <div class="media-body">
-                                            <strong>Fax:</strong><br>
-                                            0123456789
+                                            <strong>Correo:</strong><br>
+                                            contacto@tedystoys.com
                                         </div>
                                     </div>
                                     <div class="contact-details">                                     
@@ -83,7 +89,7 @@ BREADCRUMB CARRITO DE COMPRAS
 
                         <div class="clearfix"></div>
                         <div class="col-md-12">     
-                            <h5 class="heading space40"><span>Contact Form</span></h5>                        
+                            <h5 class="heading space40"><span>FORMULARIO DE CONTACTO</span></h5>                        
                             <form method="post" id="form" role="form" action="archivo.php" class="form" >
                                 <div class="row">
                                     <div class="col-md-6 space20">

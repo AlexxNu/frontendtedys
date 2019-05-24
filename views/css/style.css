@@ -41,6 +41,7 @@ body {
     font-size: 13px;
     color: #444;
     
+    
 }
 
 h1,
@@ -3806,12 +3807,13 @@ footer {
 }
 
 .new {
-    background: #ffcc01;
+    background: #E75200;
+    
     left: 7px;
 }
 
 .offer {
-    background: #444444;
+    background: #4CA6DE;
 }
 
 
