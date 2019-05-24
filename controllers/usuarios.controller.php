@@ -15,11 +15,13 @@ class ControladorUsuarios{
             
             $datos = array("nombre"=>$_POST["regUsuario"],
                             "password"=>$encriptar,
-							"email"=>$_POST["regEmail"],
-							"foto"=>"",
-                            "modo"=>"directo",
+														"email"=>$_POST["regEmail"],
+														"foto"=>"",
+														"modo"=>"directo",
+														"tipo"=>$_POST["tipousuario"],
                             "verificacion"=>1,
-                            "emailEncriptado"=>$encriptarEmail);
+														"emailEncriptado"=>$encriptarEmail
+													);
             $tabla = "usuarios";
 
             
@@ -460,7 +462,7 @@ class ControladorUsuarios{
 
 		$tabla = "usuarios";
 		$item = "email";
-		$valor = $datos["email"];
+		$valor = $datos["email"]; 
 		$emailRepetido = false;
 
 		$respuesta0 = ModeloUsuarios::mdlMostrarUsuario($tabla, $item, $valor);
